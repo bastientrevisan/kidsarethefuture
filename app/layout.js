@@ -1,4 +1,5 @@
-import TopBar from "./components/TopBar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./globals.css";
 
 export const metadata = {
@@ -12,8 +13,9 @@ export default function RootLayout({ children }) {
       <body className="flex justify-center">
         <div className="app w-[70%] flex relative shadow-xl/30">
           <main className="content w-full">
-            <TopBar />
+            <Header />
             {children}
+            <Footer />
           </main>
         </div>
       </body>
