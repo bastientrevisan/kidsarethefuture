@@ -16,10 +16,10 @@ const MenuBar = () => {
 						<li>
 							<a>Association</a>
 							<ul className="p-2">
-								<li><a onClick={() => router.push('/association?mode=QSN')}>Qui sommes nous ?</a></li>
-								<li><a onClick={() => router.push('/association?mode=mission')}>Nos Missions</a></li>
-								<li><a onClick={() => router.push('/association?mode=activite')}>Nos Activités</a></li>
-								<li><a onClick={() => router.push('/association?mode=elite')}>Team Elite</a></li>
+								<li><a onClick={() => router.push('/association/QSN')}>Qui sommes nous ?</a></li>
+								<li><a onClick={() => router.push('/association/missions')}>Nos Missions</a></li>
+								<li><a onClick={() => router.push('/association/activites')}>Nos Activités</a></li>
+								<li><a onClick={() => router.push('/association/elite')}>Team Elite</a></li>
 							</ul>
 						</li>
 						<li><a onClick={() => router.push('/ecole-de-danse')} >Ecole de danse</a></li>
