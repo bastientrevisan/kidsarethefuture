@@ -1,13 +1,23 @@
-import clientPromise from "@/libs/mongodb";
+"use client";
+import { useEffect, useState } from "react";
 
-export default async function Actualites() { 
+export default function Actualites() { 
+  const [articles, setArticles] = useState([]);
 
-  const articles = await clientPromise.db("kidsarethefuture").collection("articles").find({}).toArray();
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const response = await fetch("/api/articles");
+      const data = await response.json();
+      setArticles(data);
+    };
 
+    fetchArticles();
+  }, []);
+  
   return (
     <div>
-      { articles.map((article, idx) => (
-        <div key={idx} className="card bg-neutral shadow-sm m-8">
+      { articles.map((article) => (
+        <div key={article._id} className="card bg-neutral shadow-sm m-8">
           <div className="card-body">
             <h2 className="card-title">{article.titre}</h2>
             <p>{article.contenu}</p>

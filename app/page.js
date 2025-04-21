@@ -1,12 +1,19 @@
-import clientPromise from "@/libs/mongodb";
+"use client";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
+export default function Home() {
   try {
-    const latest = await clientPromise.db("kidsarethefuture").collection("articles")
-      .find({})
-      .sort({ date: -1 }) // Sort by date in descending order
-      .limit(1)
-      .toArray();
+    const [latest, setLatest] = useState([]);
+
+    useEffect(() => {
+      const fetchlatestArticle = async () => {
+        const response = await fetch("/api/articles/latest");
+        const data = await response.json();
+        setLatest(data);
+      };
+
+      fetchlatestArticle();
+    }, []);
 
     const article = latest[0] || null;
 
@@ -15,7 +22,7 @@ export default async function Home() {
         <div className="m-8">
           <h1 className="text-xl font-bold">Dernier article</h1>
           {article ? (
-            <div className="card bg-neutral shadow-sm">
+            <div key={article._id} className="card bg-neutral shadow-sm">
               <div className="card-body">
                 <h2 className="card-title">{article.titre}</h2>
                 <p>{article.contenu}</p>
