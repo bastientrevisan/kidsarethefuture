@@ -17,10 +17,10 @@ export async function POST(req) {
 
 // Met a jour un article dans la base de donnees
 export async function PUT(req) {
-  const { id, title, content } = await req.json();
+  const { id, titre, auteur, contenu } = await req.json();
   await clientPromise.db("kidsarethefuture").collection("articles").updateOne(
     { _id: new ObjectId(id) },
-    { $set: { title, content } }
+    { $set: { titre, auteur, contenu } }
   );
   return Response.json({ message: "Article mis à jour" });
 }
