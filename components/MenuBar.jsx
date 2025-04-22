@@ -33,8 +33,7 @@ const MenuBar = () => {
 			</div>
 			<div className="navbar-end hidden lg:flex">
 				<ul className="menu menu-horizontal px-1">
-				<li className="hidden"><a onClick={() => router.push('/admin')} ></a></li>{/* A supprimer en prod */}
-				<li><a onClick={() => router.push('/actualites')} >Actualités</a></li>
+					<li><a onClick={() => router.push('/actualites')} >Actualités</a></li>
 					<li>
 						<details>
 							<summary>Association</summary>
