@@ -17,7 +17,7 @@ export default function EditArticle (props) {
     const id = props.id;
     var response;
 
-    if (id == 0)
+    if (!id)
     {
       response = await fetch('/api/articles', {
         method: 'POST',
@@ -46,39 +46,40 @@ export default function EditArticle (props) {
   };
 
   return (
-    // <div className="modal">
-    //   <div className="modal-box w-1/2 max-w-5xl">
-    //     <h3 className="font-bold text-lg">Nouvel article</h3>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="input w-3/4 m-2"
-            value={titre}
-            onChange={e => setTitre(e.target.value)}
-            placeholder="Titre"
-            required
-          />
-          <input
-            type="text"
-            className="input w-3/4 m-2"
-            value={auteur}
-            onChange={e => setAuteur(e.target.value)}
-            placeholder="Auteur"
-            required
-          />
-          <textarea
-            className="textarea textarea-xl w-full h-100 m-2"
-            value={contenu}
-            onChange={e => setContenu(e.target.value)}
-            placeholder="Contenu"
-            required
-          />
-          {/* <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}> */}
-          <div className="flex justify-end m-2">
-            <button className="btn btn-outline btn-secondary btn-lg m-2" type="submit">Enregistrer</button>
-          </div>
-        </form>
-    //   </div>
-    // </div>
+    <div className="modal-box w-1/2 max-w-5xl">
+      <h3 className="font-bold text-lg">Nouvel article</h3>
+      <form method="dialog">
+        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="input w-3/4 m-2"
+          value={titre}
+          onChange={e => setTitre(e.target.value)}
+          placeholder="Titre"
+          required
+        />
+        <input
+          type="text"
+          className="input w-3/4 m-2"
+          value={auteur}
+          onChange={e => setAuteur(e.target.value)}
+          placeholder="Auteur"
+          required
+        />
+        <textarea
+          className="textarea textarea-xl w-full h-100 m-2"
+          value={contenu}
+          onChange={e => setContenu(e.target.value)}
+          placeholder="Contenu"
+          required
+        />
+        {/* <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}> */}
+        <div className="flex justify-end m-2">
+          <button className="btn btn-outline btn-secondary btn-lg m-2" type="submit">Enregistrer</button>
+        </div>
+      </form>
+    </div>
   );
 };
