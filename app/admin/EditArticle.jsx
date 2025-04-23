@@ -75,7 +75,6 @@ export default function EditArticle (props) {
           placeholder="Contenu"
           required
         />
-        {/* <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}> */}
         <div className="flex justify-end m-2">
           <button className="btn btn-outline btn-secondary btn-lg m-2" type="submit">Enregistrer</button>
         </div>

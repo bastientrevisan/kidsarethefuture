@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import EditArticle from "./EditArticle";
+import SuppArticle from "./SuppArticle";
 
 export default function Admin() { 
   // State pour afficher tous les articles
@@ -51,6 +52,13 @@ export default function Admin() {
         />
       </dialog>
 
+      <dialog id="SupprimerArticle" className="modal">
+        <SuppArticle 
+          id={editingArticle.id}
+          titre={editingArticle.titre}
+        />
+      </dialog>
+
       <table className="table bg-neutral mx-5 mb-5">
         {/* head */}
         <thead>
@@ -68,7 +76,7 @@ export default function Admin() {
             <td>{article.titre}</td>
             <td>{article.auteur}</td>
             <td>{article.date}</td>
-            <th className="flex">
+            <td className="flex">
               <button 
                 className="btn btn-ghost btn-xs"
                 onClick={ () => {
@@ -83,8 +91,21 @@ export default function Admin() {
               >
                 Modifier
               </button>
-              <button className="btn btn-ghost btn-xs">Supprimer</button>
-            </th>
+              <button 
+                className="btn btn-ghost btn-xs"
+                onClick={ () => {
+                  setEditingArticle({
+                    id: article._id,
+                    titre: article.titre,
+                    auteur: article.auteur,
+                    contenu: article.contenu
+                  });
+                  document.getElementById('SupprimerArticle').showModal(); 
+                }}
+              >
+                Supprimer
+              </button>
+            </td>
           </tr>
           ))
         }
