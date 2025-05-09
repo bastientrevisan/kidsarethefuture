@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.9.0",
+    "@types/bcryptjs": "^2.4.6",
     "autoprefixer": "^10.4.21",
-    "mongodb": "^6.15.0",
+    "bcryptjs": "^3.0.2",
+    "mongodb": "^6.16.0",
     "next": "15.3.0",
+    "next-auth": "^5.0.0-beta.27",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

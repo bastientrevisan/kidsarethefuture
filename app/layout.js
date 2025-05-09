@@ -1,3 +1,4 @@
+import { Providers } from "./providers";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./globals.css";
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
         <div className="app w-[70%] shadow-xl/30 h-fit">
           <Header />
           <main className="content size-full min-h-120">
-            {children}
+            <Providers>{children}</Providers>
           </main>
           <Footer />
         </div>

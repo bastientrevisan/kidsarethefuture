@@ -2,8 +2,12 @@
 import { useEffect, useState } from "react";
 import EditArticle from "./EditArticle";
 import SuppArticle from "./SuppArticle";
+import { useSession } from "next-auth/react";
+// import { SignIn } from "@/components/admin/SignIn";
+import { redirect } from "next/navigation";
 
 export default function Admin() { 
+  const { data: session } = useSession();
   // State pour afficher tous les articles
   const [articles, setArticles] = useState([]);
   // State pour éditer un article
@@ -13,7 +17,7 @@ export default function Admin() {
     auteur: '',
     contenu: ''
   });
-  
+
   useEffect(() => {
     const fetchArticles = async () => {
       const response = await fetch("/api/articles");
@@ -23,6 +27,11 @@ export default function Admin() {
 
     fetchArticles();
   }, []);
+
+  if (!session) {
+    // On est pas connectés
+    redirect('/auth/signin')
+  }
 
   return (
     <div className="overflow-x-auto">
