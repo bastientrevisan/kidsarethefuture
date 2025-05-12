@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className="flex justify-center">
-        <div className="app w-[70%] shadow-xl/30 h-fit">
+        <div className="app lg:w-[70%] shadow-xl/30 h-fit">
           <Header />
           <main className="content size-full min-h-120">
             <Providers>{children}</Providers>

@@ -5,8 +5,8 @@ const Association = () => {
       <div className="card lg:card-side bg-neutral shadow-sm mb-8">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-            alt="Album" />
+            src="quisommesnous.jpg"
+            alt="QuiSommesNous?" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Qui sommes-nous ?</h2>
@@ -32,8 +32,8 @@ const Association = () => {
       <div className="card lg:card-side bg-neutral shadow-sm mb-8">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-            alt="Album" />
+            src="activites.jpg"
+            alt="Activités" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Nos Activités</h2>
@@ -61,21 +61,22 @@ const Association = () => {
         </div>
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-            alt="Album" />
+            src="teamelite.jpg"
+            alt="TeamElite" />
         </figure>
       </div>
 
       <div className="card lg:card-side bg-neutral shadow-sm mb-8">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-            alt="Album" />
+            src="teamkids.jpg"
+            alt="TeamKids" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">La Team Kids</h2>
           <p>
-            ahbec
+            Au sein de l'association et de l'école, un groupe particulièrement motivé (la team élite) se produit sur scène lors de différents spectacles.<br />
+            Récemment, ils se sont produits sur la scène de Marseille devant 5000 personnes, où la participation de l'école a été très bien accueillie.
           </p>
         </div>
       </div>
