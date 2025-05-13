@@ -5,7 +5,7 @@ const Association = () => {
       <div className="card lg:card-side bg-neutral shadow-sm mb-8">
         <figure>
           <img
-            src="quisommesnous.jpg"
+            src="quisommesnousnetb.jpg"
             alt="QuiSommesNous?" />
         </figure>
         <div className="card-body">
@@ -24,8 +24,8 @@ const Association = () => {
         </div>
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
-            alt="Album" />
+            src="mission.jpg"
+            alt="Mission" />
         </figure>
       </div>
 
@@ -69,7 +69,7 @@ const Association = () => {
       <div className="card lg:card-side bg-neutral shadow-sm mb-8">
         <figure>
           <img
-            src="teamkids.jpg"
+            src="teamkids-1.jpg"
             alt="TeamKids" />
         </figure>
         <div className="card-body">

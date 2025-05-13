@@ -14,18 +14,8 @@ const MenuBar = () => {
     		  </div>
 					<ul tabIndex={0} className="menu menu-sm dropdown-content bg-neutral rounded-box z-[100] mt-3 w-52 p-2 shadow-xl">
 						<li><a onClick={() => router.push('/actualites')} >Actualités</a></li>
-						<li><a onClick={() => router.push('/association')}>Association</a></li>
-						<li>
-							  <a>Nos cours</a>
-								<ul className="w-50 p-2 bg-neutral shadow-xl">
-                <li><a onClick={() => router.push('/cours/breaking') } >Breaking</a></li>
-                <li><a onClick={() => router.push('/cours/souldance') } >Soul Dance</a></li>
-                <li><a onClick={() => router.push('/cours/hiphop') } >Hip-hop / Newstyle</a></li>
-                <li><a onClick={() => router.push('/cours/grafiti') } >Grafiti</a></li>
-                <li><a onClick={() => router.push('/cours/djing') } >DJing</a></li>
-                <li><a onClick={() => router.push('/cours/pilate') } >Pilate</a></li>
-								</ul>
-						</li>
+            <li><a onClick={() => router.push('/association')}>Association</a></li>
+						<li><a onClick={() => router.push('/cours')}>Nos cours</a></li>
 						<li><a onClick={() => router.push('/evenements')} >Événements</a></li>
 						<li><a onClick={() => router.push('/location')} >Location</a></li>
 						<li><a onClick={() => router.push('/contact')} >Contact</a></li>
@@ -37,37 +27,7 @@ const MenuBar = () => {
 				<ul className="menu menu-horizontal px-1">
 					<li><a onClick={() => router.push('/actualites')} >Actualités</a></li>
 					<li><a onClick={() => router.push('/association')}>Association</a></li>
-					<li>
-					  <details id="cours">
-						  <summary>Nos cours</summary>
-							<ul className="w-50 p-2 bg-neutral shadow-xl">
-                <li><a onClick={() => {
-                  document.getElementById("cours").removeAttribute("open"); // Referme le menu deroulant
-                  router.push('/cours/breaking');
-                }} >Breaking</a></li>
-                <li><a onClick={() => {
-                  document.getElementById("cours").removeAttribute("open");
-                  router.push('/cours/souldance')
-                }} >Soul Dance</a></li>
-                <li><a onClick={() => {
-                  document.getElementById("cours").removeAttribute("open");
-                  router.push('/cours/hiphop')
-                }} >Hip-hop / Newstyle</a></li>
-                <li><a onClick={() => {
-                  document.getElementById("cours").removeAttribute("open");
-                  router.push('/cours/grafiti')
-                }} >Grafiti</a></li>
-                <li><a onClick={() => {
-                  document.getElementById("cours").removeAttribute("open");
-                  router.push('/cours/djing')
-                }} >DJing</a></li>
-                <li><a onClick={() => {
-                  document.getElementById("cours").removeAttribute("open");
-                  router.push('/cours/pilate')
-                }} >Pilate</a></li>
-							</ul>
-						</details>
-					</li>
+					<li><a onClick={() => router.push('/cours')}>Nos cours</a></li>
 					<li><a onClick={() => router.push('/evenements')} >Événements</a></li>
 					<li><a onClick={() => router.push('/location')} >Location</a></li>
 					<li><a onClick={() => router.push('/contact')} >Contact</a></li>

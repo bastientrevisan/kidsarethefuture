@@ -17,7 +17,7 @@ export default function Home() {
   const article = latest[0] || null;
 
   return (
-    <div className="m-8 flex">
+    <div className="m-8 lg:flex">
       <div className="m-8">
         <h1 className="text-xl font-bold">Dernier article</h1>
         {article ? (
@@ -32,7 +32,7 @@ export default function Home() {
         )}
       </div>
 
-      <div className="m-8 w-250">
+      <div className="m-8">
         <h1 className="text-xl font-bold">Actu reseaux</h1>
         <div className="card bg-neutral shadow-sm">
           <div className="card-body">
