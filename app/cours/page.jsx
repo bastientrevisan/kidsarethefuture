@@ -4,9 +4,10 @@ import CarteCours from "./CarteCours";
 const Cours = () => {
   return (
     <div className='place-content-center gap-4 p-6'>
-
-      <h1 className='text-2xl text-bold text-center mb-5'>Nos cours</h1>
-
+      <div className="justify-between flex">
+        <h1 className='text-2xl text-bold text-center mb-5'>Nos cours</h1>
+        <a className="btn btn-outline" href="/planning.pdf" download="planning_MTB_BBoying_School.pdf">Planning complet (PDF)</a>
+      </div>
       <div className="join join-vertical bg-neutral w-full">
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="AccordionCours" defaultChecked />
@@ -20,7 +21,7 @@ const Cours = () => {
           <input type="radio" name="AccordionCours" />
           <div className="collapse-title font-semibold">Soul Dance</div>
           <div className="collapse-content text-sm ml-9">
-            <CarteCours titre="Soul Dance" age="Tout âge" horaires={["Mardi 20h-21h25"]} tarif="250 euros" img="souldance.jpg"/>
+            <CarteCours titre="Soul Dance" topBadge="Tous âges" horaires={["Mardi 20h-21h15"]} tarif="250€" img="souldance.jpg"/>
           </div>
         </div>
 
@@ -28,7 +29,7 @@ const Cours = () => {
           <input type="radio" name="AccordionCours" />
           <div className="collapse-title font-semibold">Hip-Hop / Newstyle</div>
           <div className="collapse-content text-sm ml-9">
-            <CarteCours titre="Hip-Hop / Newstyle" age="Adultes" horaires={["Jeudi 12h10-13h10"]} tarif="250 euros" />
+            <CarteCours titre="Hip-Hop / Newstyle" topBadge="Adultes" horaires={["Jeudi 12h10-13h10"]} tarif="250€" img="logoMTBBS.jpg"/>
           </div>
         </div>
 
@@ -36,7 +37,7 @@ const Cours = () => {
           <input type="radio" name="AccordionCours" />
           <div className="collapse-title font-semibold">Grafiti</div>
           <div className="collapse-content text-sm ml-9">
-            <CarteCours titre="Grafiti" age="1 fois/ mois" horaires={["Jeudi 18h-20h"]} tarif="180 euros" img="grafitinetb.jpg"/>
+            <CarteCours titre="Grafiti" notes={["1 fois/ mois"]} horaires={["Jeudi 18h-20h"]} tarif="180€" img="grafitinetb.jpg"/>
           </div>
         </div>
 
@@ -44,17 +45,31 @@ const Cours = () => {
           <input type="radio" name="AccordionCours" />
           <div className="collapse-title font-semibold">DJing</div>
           <div className="collapse-content text-sm ml-9">
-            <CarteCours titre="DJing" age="1 fois/ mois" horaires={["Mercredi 19h-21h"]} tarif="180 euros" img="djing.jpg"/>
+            <CarteCours titre="DJing" horaires={["Mercredi 19h-21h"]} notes={["1 fois/ mois"]} tarif="180€" img="djing.jpg"/>
           </div>
         </div>
 
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">Pilates</div>
+          <div className="collapse-title font-semibold">Pilates / Yoga</div>
           <div className="collapse-content text-sm ml-9">
-            <CarteCours titre="Pilates" age="Adultes" horaires={["Vendredi 12h10-13h10"]} tarif="400 euros" />
+            <CarteCours titre="Yoga" topBadge="Adultes" horaires={["Mardi 12h10-13h10"]} tarif="450€" img="logoMTBBS.jpg"/>
+            <CarteCours titre="Pilates" topBadge="Adultes" horaires={["Vendredi 12h10-13h10"]} tarif="450€" img="logoMTBBS.jpg"/>
           </div>
         </div>
+      </div>
+      <div className="mt-2">
+        <ul>
+          * ATTENTION:
+          <li>+ 20€ d'adhésion obligatoiresur tous les tarifs</li>
+          <li>- 10% famille sur la cotisation.</li>
+          <li>Tarif préférentiel pour les personnes habitant dans les quartiers prioritaires de la ville (Chambord-Chaumes-Monplaisir-Coeur de ville)
+              Contactez-nous pour plus d'informations</li>
+        </ul>
+        <p className="mt-2">
+        ** Possibilité 2 cours par semaine yoga/pilates,
+        Contactez-nous
+        </p>
       </div>
     </div>
   );
