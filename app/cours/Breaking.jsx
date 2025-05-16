@@ -10,7 +10,6 @@ const Breaking = () => {
           <CarteCours titre="Baby-break" topBadge="4-5 ans" horaires={["Jeudi 17h-17h45"]} tarif="200€" img="logoMTBBS.jpg" />
           <CarteCours titre="Baby-break" topBadge="6-7 ans" horaires={["Mardi 17h00-18h00"]} tarif="220€" img="logoMTBBS.jpg" />
           <CarteCours titre="Break" topBadge="8 ans et +" horaires={["Mercredi 14h00-15h15"]} tarif="250€" img="logoMTBBS.jpg" />
-          <CarteCours titre="Loisir" topBadge="Ados/Adultes" horaires={["Mercredi 19h00-20h30"]} notes={["3 fois / mois"]}  tarif="240€" img="logoMTBBS.jpg" />
         </div>
   		</div>
 
@@ -51,14 +50,14 @@ const Breaking = () => {
           <CarteCours titre="Institut primaire"
                       topBadge="À partir de 7 ans"
                       horaires={["Mardi 12h00-13h15"]}
-                      notes={["Réservé aux élèves", "Limité à 14 places"]}
+                      notes={["Réservé aux élèves de l'Institut Familial", "Limité à 14 places"]}
                       lieu="1 All. Mortarieu, 82000 Montauban"
                       tarif="220€"
                       img="logoMTBBS.jpg" />
 
           <CarteCours titre="Institut collège"
                       horaires={["Jeudi 12h00-13h15"]}
-                      notes={["Réservé aux élèves", "Limité à 14 places"]}
+                      notes={["Réservé aux élèves de l'Institut Familial", "Limité à 14 places"]}
                       lieu="1 All. Mortarieu, 82000 Montauban"
                       tarif="220€"
                       img="logoMTBBS.jpg" />

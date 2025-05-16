@@ -9,7 +9,7 @@ export default function CarteCours (props) {
         <figure>
           <img className="max-w-52 h-auto" src={ props.img } />
         </figure>
-        <div className="card-body ">
+        <div className="card-body justify-between">
           <h2 className="card-title">{ props.titre }</h2>
 
           <ul className="font-semibold opacity-60">
@@ -21,7 +21,7 @@ export default function CarteCours (props) {
           { props.notes &&
           <ul>
           {props.notes.map((note, index) => (
-            <li className="badge badge-accent m-2" key={index}> { note } </li>
+            <li className="mt-2" key={index}> { note } </li>
           ))}
           </ul>
           }
@@ -30,7 +30,7 @@ export default function CarteCours (props) {
           <div>{ props.lieu }</div>
           }
           <div className="card-actions justify-end">
-            <div className="badge badge-secondary">{ props.tarif }*</div>
+            <div className="badge badge-info">{ props.tarif }*</div>
           </div>
         </div>
       </div>

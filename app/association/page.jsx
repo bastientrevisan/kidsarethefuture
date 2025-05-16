@@ -10,7 +10,7 @@ const Association = () => {
         </figure>
         <div className="card-body lg:max-w-1/2">
           <h2 className="card-title">Qui sommes-nous ?</h2>
-          <p>L’association KIDS ARE THE FUTURE / Ecole MTB BBOYING SCHOOL, a vu le jour en septembre 2018. Crée par Audrey TREVISAN championne de France et championne du monde de Breaking, et Eric Espinosa.</p>
+          <p>L’association KIDS ARE THE FUTURE / Ecole MTB BBOYING SCHOOL, a vu le jour en septembre 2018. Crée par Audrey TREVISAN championne de France et championne du monde de Breaking, et Eric ESPINOSA.</p>
           <p>L’école est 100% Hip-hop et enseigne les différentes disciplines ainsi que les valeurs de cette culture.</p>
         </div>
       </div>

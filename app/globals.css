@@ -5,7 +5,14 @@
 @plugin "daisyui/theme" {
   name: "sunset";
   default: true;
+  --color-primary: oklch(57% 0.245 27.325);
+  --color-primary-content: oklch(93% 0.034 272.788);
   --color-secondary: #d41d1d;
+  --color-secondary-content: oklch(98% 0 0);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
 };
 
 :root {
