@@ -21,7 +21,7 @@ const Cours = () => {
           <input type="radio" name="AccordionCours" />
           <div className="collapse-title font-semibold">Soul Dance</div>
           <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="Soul Dance" topBadge="Tous âges" horaires={["Mardi 20h-21h15"]} tarif="250€" img="souldance.jpg"/>
+            <CarteCours titre="Soul Dance" topBadge="Tous âges" horaires={["Mardi 20h-21h15"]} tarif="250€" img="souldance_02.jpg"/>
           </div>
         </div>
 
@@ -53,7 +53,7 @@ const Cours = () => {
           <input type="radio" name="AccordionCours" />
           <div className="collapse-title font-semibold">DJing</div>
           <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="DJing" horaires={["Mercredi 19h-21h"]} notes={["1 fois/ mois"]} tarif="180€" img="djing.jpg"/>
+            <CarteCours titre="DJing" horaires={["Mercredi 19h-21h"]} notes={["1 fois/ mois"]} tarif="180€" img="djing_02.jpg"/>
           </div>
         </div>
 
