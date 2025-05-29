@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import CarteEvent from "../components/CarteEvent";
+import CarteArticle from "../components/CarteArticle";
 
 export default function Home() {
   const [latest, setLatest] = useState([]);
@@ -14,32 +16,33 @@ export default function Home() {
     fetchlatestArticle();
   }, []);
 
-  const article = latest[0] || null;
+  const article1 = latest[0] || null;
+  const article2 = latest[1] || null;
 
   return (
-    <div className="m-8 lg:flex">
-      <div className="m-8">
-        <h1 className="text-xl font-bold">Dernier article</h1>
-        {article ? (
-          <div key={article._id} className="card bg-neutral shadow-sm">
-            <div className="card-body">
-              <h2 className="card-title">{article.titre}</h2>
-              <p>{article.contenu}</p>
-            </div>
-          </div>
+    <div className="w-full lg:flex">
+      <div className="m-5">
+        <h1 className="text-xl font-bold mb-5">Derniers articles</h1>
+        {article1 ? (
+        <div className="mb-5">
+          <CarteArticle titre={article1.titre} contenu={article1.contenu} lien={article1.lien} img={article1.img}/>
+        </div>
+        ) : (
+          <p>Aucun article trouvé</p>
+        )}
+
+        {article2 ? (
+        <div className="mb-5">
+          <CarteArticle titre={article2.titre} contenu={article2.contenu} lien={article2.lien} img={article2.img}/>
+        </div>
         ) : (
           <p>Aucun article trouvé</p>
         )}
       </div>
 
-      <div className="m-8">
-        <h1 className="text-xl font-bold">Actu reseaux</h1>
-        <div className="card bg-neutral shadow-sm">
-          <div className="card-body">
-            <h2 className="card-title"></h2>
-            <p>Integration post insta / facebook</p>
-          </div>
-        </div>
+      <div className="m-5">
+        <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
+        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="beatbox.jpg" date="7 juin 2025"/>
       </div>
     </div>
   );

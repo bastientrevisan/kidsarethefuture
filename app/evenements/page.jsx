@@ -1,14 +1,16 @@
-import CarteEvent from "./CarteEvent";
+import CarteEvent from "../../components/CarteEvent";
 
 const Evenements = () => {
 
   return (
     <div className="grid lg:grid-cols-3 gap-8 m-8">
-      <div><CarteEvent titre="Evenement" desc="Nulli vera modum res amicorum prorsus ad trium multa sunt numquam precari ab honestissime non satis non quibus amicum sit detrahique invehi quibus est multa boni in rebus in amicorum indigno causa commodis rebus potius est suis multaeque sunt." img="beatbox.jpg" date="28 janvier 2026"/></div>
-      <div><CarteEvent titre="Evenement" desc="Nulli vera modum res amicorum prorsus ad trium multa sunt non vera animatus aliquem faceremus Nec boni amicorum in honestissime amicorum sunt prima nostra multaeque in rebus facimus in assentior honestissime nulli illa insectarique vehementius amicorum Quam Nec ab assentior assentior fruantur ut aliquem suis quibus commodis amicum in indigno Nec amicum in enim commodis trium causa enim ab ut ipsi quae Quam in assentior multaeque in fruantur Nec trium sit numquam precari ab honestissime non satis non quibus amicum sit detrahique invehi quibus est multa boni in rebus in amicorum indigno causa commodis rebus potius est suis multaeque sunt." img="beatbox.jpg" date="28 janvier 2026"/></div>
-      <div><CarteEvent titre="Evenement" desc="Nulli vera modum res amicorum prorsus ad trium multa sunt non vera animatus aliquem faceremus Nec boni amicorum in honestissime amicorum sunt prima nostra multaeque in rebus facimus in assentior honestissime nulli illa insectarique vehementius amicorum Quam Nec ab assentior assentior fruantur ut aliquem suis quibus commodis amicum in indigno Nec amicum in enim commodis trium causa enim ab ut ipsi quae Quam in assentior multaeque in fruantur Nec trium sit numquam precari ab honestissime non satis non quibus amicum sit detrahique invehi quibus est multa boni in rebus in amicorum indigno causa commodis rebus potius est suis multaeque sunt." img="beatbox.jpg" date="28 janvier 2026"/></div>
-      <div><CarteEvent titre="Evenement" desc="Nulli vera modum res amicorum prorsus ad trium multa sunt non vera animatus aliquem faceremus Nec boni amicorum in honestissime amicorum sunt prima nostra multaeque in rebus facimus in assentior honestissime nulli illa insectarique vehementius amicorum Quam Nec ab assentior assentior fruantur ut aliquem suis quibus commodis amicum in indigno Nec amicum in enim commodis trium causa enim ab ut ipsi quae Quam in assentior multaeque in fruantur Nec trium sit numquam precari ab honestissime non satis non quibus amicum sit detrahique invehi quibus est multa boni in rebus in amicorum indigno causa commodis rebus potius est suis multaeque sunt." img="beatbox.jpg" date="28 janvier 2026"/></div>
-      <div><CarteEvent titre="Evenement" desc="Nulli vera modum res amicorum prorsus ad trium multa sunt non vera animatus aliquem faceremus Nec boni amicorum in honestissime amicorum sunt prima nostra multaeque in rebus facimus in assentior honestissime nulli illa insectarique vehementius amicorum Quam Nec ab assentior assentior fruantur ut aliquem suis quibus commodis amicum in indigno Nec amicum in enim commodis trium causa enim ab ut ipsi quae Quam in assentior multaeque in fruantur Nec trium sit numquam precari ab honestissime non satis non quibus amicum sit detrahique invehi quibus est multa boni in rebus in amicorum indigno causa commodis rebus potius est suis multaeque sunt." img="beatbox.jpg" date="28 janvier 2026"/></div>
+      <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="beatbox.jpg" date="7 juin 2025"/>
+      <CarteEvent titre="Montauban en scène" desc="??" img="beatbox.jpg" date="19 juin 2025"/>
+      <CarteEvent titre="Fête de l'école" desc="??" img="feteecole.jpg" date="20 juin 2025"/>
+      <CarteEvent titre="BREAKING HISTORY" desc="Événement NATIONAL de BREAKING. Prochaine édition le samedi 29 novembre 2025. Conférence, Stage, Battle." img="beatbox.jpg" date="29 novembre 2025"/>
+      <CarteEvent titre="STAGES Vacances scolaires" desc="Stages de découverte et de perfectionnement des différentes disciplines de la culture hip-hop. 4 jours, chaque 1ère semaine de vacances scolaire." img="beatbox.jpg"/>
+      <CarteEvent titre="MTB JAM" desc="Événement de partage, gratuit dans les quartiers prioritaires de la ville." img="beatbox.jpg"/>
+      <CarteEvent titre="Break'N Gliss Camp" desc="Séjour Surf et Break." img="beatbox.jpg"/>
     </div>
   );
 }

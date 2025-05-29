@@ -16,7 +16,7 @@ const Contact = () => {
           <div className="card-title text-xl">ADRESSE DE L'ÉCOLE</div>
           <p>Parc Aussonne
             609 Route du nord, 82000 Montauban
-            (Le Carré Rouge, le étage)</p>
+            (Le Carré Rouge, 1er étage)</p>
 
           <div className="card-title text-xl">ACTIVITÉS</div>
           <ul>

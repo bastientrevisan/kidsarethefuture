@@ -1,4 +1,4 @@
-import CarteCours from "./CarteCours";
+import CarteCours from "../../components/CarteCours";
 
 const Breaking = () => {
 	return (
@@ -10,6 +10,7 @@ const Breaking = () => {
           <CarteCours titre="Baby-break" topBadge="4-5 ans" horaires={["Jeudi 17h-17h45"]} tarif="200€" img="logoMTBBS.jpg" />
           <CarteCours titre="Baby-break" topBadge="6-7 ans" horaires={["Mardi 17h00-18h00"]} tarif="220€" img="logoMTBBS.jpg" />
           <CarteCours titre="Break" topBadge="8 ans et +" horaires={["Mercredi 14h00-15h15"]} tarif="250€" img="logoMTBBS.jpg" />
+          <CarteCours titre="Breaking" topBadge="Ados / Adultes" horaires={["Vendredi 19h15-20h30"]} tarif="250€" img="logoMTBBS.jpg" />
         </div>
   		</div>
 

@@ -4,7 +4,10 @@ import { ObjectId } from "mongodb";
 
 // Retrouve la liste de tous les articles de la base de donnees
 export async function GET() {
-  const articles = await clientPromise.db("kidsarethefuture").collection("articles").find({}).toArray();
+  const articles = await clientPromise.db("kidsarethefuture").collection("articles")
+    .find({})
+    .sort({ _id: -1 }) // Tri par plus recent
+    .toArray();
   return Response.json(articles);
 }
 

@@ -7,7 +7,7 @@ export default function CarteCours (props) {
       }
       <div className="card bg-base-100 shadow-sm max-w-min">
         <figure>
-          <img className="max-w-52 h-auto" src={ props.img } />
+          <img className="max-w-52 h-auto" src={`cours/${ props.img }`} />
         </figure>
         <div className="card-body justify-between">
           <h2 className="card-title">{ props.titre }</h2>

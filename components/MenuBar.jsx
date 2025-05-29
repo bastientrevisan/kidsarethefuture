@@ -17,7 +17,7 @@ const MenuBar = () => {
             <li><a onClick={() => router.push('/association')}>Association</a></li>
 						<li><a onClick={() => router.push('/cours')}>Nos cours</a></li>
 						<li><a onClick={() => router.push('/evenements')} >Événements</a></li>
-						<li><a onClick={() => router.push('/location')} >Location</a></li>
+						{/* <li><a onClick={() => router.push('/location')} >Location</a></li> */}
 						<li><a onClick={() => router.push('/contact')} >Contact</a></li>
 					</ul>
 				</div>
@@ -29,7 +29,7 @@ const MenuBar = () => {
 					<li><a onClick={() => router.push('/association')}>Association</a></li>
 					<li><a onClick={() => router.push('/cours')}>Nos cours</a></li>
 					<li><a onClick={() => router.push('/evenements')} >Événements</a></li>
-					<li><a onClick={() => router.push('/location')} >Location</a></li>
+					{/* <li><a onClick={() => router.push('/location')} >Location</a></li> */}
 					<li><a onClick={() => router.push('/contact')} >Contact</a></li>
 				</ul>
 			</div>

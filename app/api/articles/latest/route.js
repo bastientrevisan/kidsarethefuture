@@ -5,9 +5,9 @@ import clientPromise from "@/libs/mongodb";
 export async function GET() {
     const latest = await clientPromise.db("kidsarethefuture").collection("articles")
       .find({})
-      .sort({ date: -1 }) // Tri par date plus recente
-      .limit(1)
+      .sort({ _id: -1 }) // Tri par plus recent
+      .limit(2)
       .toArray();
-    
+
     return Response.json(latest);
 }

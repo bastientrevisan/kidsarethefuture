@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import CarteArticle from "@/components/CarteArticle";
 
-export default function Actualites() { 
+export default function Actualites() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -13,15 +14,12 @@ export default function Actualites() {
 
     fetchArticles();
   }, []);
-  
+
   return (
-    <div>
+    <div className="p-6">
       { articles.map((article) => (
-        <div key={article._id} className="card bg-neutral shadow-sm m-8">
-          <div className="card-body">
-            <h2 className="card-title">{article.titre}</h2>
-            <p>{article.contenu}</p>
-          </div>
+        <div key={article._id} className="mb-5">
+          <CarteArticle titre={article.titre} contenu={article.contenu} lien={article.lien} img={article.img}/>
         </div>
       ))}
     </div>
