@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="w-full lg:flex">
-      <div className="m-5">
+      <div className="max-w-3/5 m-5">
         <h1 className="text-xl font-bold mb-5">Derniers articles</h1>
         {article1 ? (
         <div className="mb-5">
@@ -42,7 +42,7 @@ export default function Home() {
 
       <div className="m-5">
         <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
-        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="beatbox.jpg" date="7 juin 2025"/>
+        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="MTBbattle.png" date="7 juin 2025"/>
       </div>
     </div>
   );

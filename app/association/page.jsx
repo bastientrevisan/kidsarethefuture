@@ -42,7 +42,7 @@ const Association = () => {
             L'école enseigne les différentes disciplines de la culture hip-hop (Breaking et les autres styles, Djing, Beatbox, Rap, Graffiti).  
             En plus des cours donnés toute l'année, l'école organise régulièrement des événements :
           </p>
-          <ul className="list">
+          <ul className="list list-xs">
             <li className="list-row"><p className="font-bold text-sm">MTB Battle</p>Championnat de Breaking</li>
             <li className="list-row"><p className="font-bold text-sm">Soirée Hip Hop</p></li>
             <li className="list-row"><p className="font-bold text-sm">MTB Jam</p> Événement de partage des différentes disciplines du Hip Hop</li>
@@ -55,10 +55,20 @@ const Association = () => {
       <div className="card lg:card-side bg-neutral shadow-sm mb-8">
         <div className="card-body lg:max-w-1/2">
           <h2 className="card-title">La Team Élite</h2>
-          <p className="text-justify">
-            Au sein de l'association et de l'école, un groupe particulièrement motivé (la team élite) se produit sur scène lors de différents spectacles.<br />
-            Récemment, ils se sont produits sur la scène de Marseille devant 5000 personnes, où la participation de l'école a été très bien accueillie.
-          </p>
+          <div className="text-justify">
+            Equipe créée sur Audition avec les meilleurs danseurs. Composée de 8 jeunes de 11 à 15 ans. Ils se produisent partout en France
+            avec un show ou en participant à des battles de niveau National.<br /><br />
+            <ul>
+              <li>Salomé BOUJON</li>
+              <li>Lorys PERICO</li>
+              <li>Marco DEXET</li>
+              <li>Enzo PERRIER</li>
+              <li>Noam BOILEAU</li>
+              <li>Loïck CHRETIEN</li>
+              <li>Téo LONGUEVILLE</li>
+              <li>Sacha TRANIER</li>
+            </ul>
+          </div>
         </div>
         <figure className="card-img lg:max-w-1/2">
           <img
@@ -75,10 +85,21 @@ const Association = () => {
         </figure>
         <div className="card-body lg:max-w-1/2">
           <h2 className="card-title">La Team Kids</h2>
-          <p className="text-justify">
-            Au sein de l'association et de l'école, un groupe particulièrement motivé (la team élite) se produit sur scène lors de différents spectacles.<br />
-            Récemment, ils se sont produits sur la scène de Marseille devant 5000 personnes, où la participation de l'école a été très bien accueillie.
-          </p>
+          <div className="text-justify">
+            Nouvelle génération de la team élite, composée d'enfants de 9 à 12 ans.<br /><br />
+            <ul>
+              <li>Elya G</li>
+              <li>Justine CHALAIN</li>
+              <li>Célestine OLIVIER</li>
+              <li>Jules SANSEGOLO</li>
+              <li>Maxime BIAJOUX</li>
+              <li>Oscar MACABIAU</li>
+              <li>Noan NEE</li>
+              <li>Gabin VANDECAVEYE</li>
+              <li>Luc BENECH</li>
+              <li>Jolan TRONCHET</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

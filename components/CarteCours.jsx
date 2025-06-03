@@ -18,16 +18,17 @@ export default function CarteCours (props) {
           ))}
           </ul>
 
-          { props.notes &&
+          { props.notes ? (
           <ul>
           {props.notes.map((note, index) => (
             <li className="mt-2" key={index}> { note } </li>
           ))}
-          </ul>
+          </ul> ) : null
           }
 
-          { props.lieu &&
+          { props.lieu ? (
           <div>{ props.lieu }</div>
+          ) : null
           }
           <div className="card-actions justify-end">
             <div className="badge badge-info">{ props.tarif }*</div>
