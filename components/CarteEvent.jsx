@@ -4,7 +4,7 @@ export default function CarteEvent (props) {
     <div className="indicator mb-5">
       <div className="card bg-neutral shadow-sm">
         <figure>
-          <img className="max-w-96 min-h-72" src={`evenements/${props.img}`} />
+          <img className="max-w-96" src={`evenements/${props.img}`} />
         </figure>
         <div className="card-body justify-between">
           <div className="card-title text-2xl">{ props.titre }</div>

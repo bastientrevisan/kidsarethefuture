@@ -42,7 +42,7 @@ export default function Home() {
 
       <div className="m-5">
         <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
-        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="MTBbattle.png" date="7 juin 2025"/>
+        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="afficheBattle30x20.png" date="7 juin 2025"/>
       </div>
     </div>
   );
