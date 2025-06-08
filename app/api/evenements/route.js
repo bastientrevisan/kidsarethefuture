@@ -2,9 +2,9 @@ import clientPromise from "@/libs/mongodb";
 // import { ObjectId } from "mongodb";
 
 
-// Retrouve la liste de toutes les rubriques de la base de donnees
+// Retrouve la liste de toutes les evenements de la base de donnees
 export async function GET() {
-  const rubriques = await clientPromise.db("kidsarethefuture").collection("rubriques")
+  const rubriques = await clientPromise.db("kidsarethefuture").collection("evenements")
     .find({})
     .sort({ ordre: 1 }) // Tri par plus recent
     .toArray();

@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import EditArticle from "./EditArticle";
 import SuppArticle from "./SuppArticle";
 import { useSession } from "next-auth/react";
-// import { SignIn } from "@/components/admin/SignIn";
 import { redirect } from "next/navigation";
 
-export default function Admin() { 
+export default function Admin() {
   const { data: session } = useSession();
   // State pour afficher tous les articles
   const [articles, setArticles] = useState([]);
@@ -36,7 +35,7 @@ export default function Admin() {
   return (
     <div className="overflow-x-auto">
       <h1 className="text-xl font-bold mx-5">Administration</h1>
-      <button 
+      <button
         className="btn btn-ghost btn-l mx-5"
         onClick={ () => {
           setEditingArticle({
@@ -45,7 +44,7 @@ export default function Admin() {
             auteur: '',
             contenu: ''
           });
-          document.getElementById('EcrireArticle').showModal(); 
+          document.getElementById('EcrireArticle').showModal();
         }}
 
       >
@@ -53,7 +52,7 @@ export default function Admin() {
       </button>
 
       <dialog id="EcrireArticle" className="modal">
-        <EditArticle 
+        <EditArticle
           id={editingArticle.id}
           titre={editingArticle.titre}
           auteur={editingArticle.auteur}
@@ -62,7 +61,7 @@ export default function Admin() {
       </dialog>
 
       <dialog id="SupprimerArticle" className="modal">
-        <SuppArticle 
+        <SuppArticle
           id={editingArticle.id}
           titre={editingArticle.titre}
         />
@@ -86,7 +85,7 @@ export default function Admin() {
             <td>{article.auteur}</td>
             <td>{article.date}</td>
             <td className="flex">
-              <button 
+              <button
                 className="btn btn-ghost btn-xs"
                 onClick={ () => {
                   setEditingArticle({
@@ -95,12 +94,12 @@ export default function Admin() {
                     auteur: article.auteur,
                     contenu: article.contenu
                   });
-                  document.getElementById('EcrireArticle').showModal(); 
+                  document.getElementById('EcrireArticle').showModal();
                 }}
               >
                 Modifier
               </button>
-              <button 
+              <button
                 className="btn btn-ghost btn-xs"
                 onClick={ () => {
                   setEditingArticle({
@@ -109,7 +108,7 @@ export default function Admin() {
                     auteur: article.auteur,
                     contenu: article.contenu
                   });
-                  document.getElementById('SupprimerArticle').showModal(); 
+                  document.getElementById('SupprimerArticle').showModal();
                 }}
               >
                 Supprimer
