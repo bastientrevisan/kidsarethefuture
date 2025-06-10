@@ -42,7 +42,7 @@ export default function Home() {
 
       <div className="m-5">
         <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
-        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="afficheBattle30x20.png" date="7 juin 2025"/>
+        <CarteEvent titre="Montauban en scène" desc="La team élite se produira lors du festival Montauban en scène le 19, 21 et 22 Juin, avant les concerts." img="MtbScene.jpg" date="19, 21, 22 juin 2025"/>
       </div>
     </div>
   );
