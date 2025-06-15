@@ -1,70 +1,46 @@
+"use client";
+import { useEffect, useState } from "react";
 import Breaking from "./Breaking";
-import CarteCours from "../../components/CarteCours";
+import AutresCours from "./AutresCours";
 
-const Cours = () => {
+export default function Cours() {
+  const [disciplines, setDisciplines] = useState([]);
+
+  useEffect(() => {
+    const fetchDisciplines = async () => {
+      const response = await fetch("/api/disciplines");
+      const data = await response.json();
+
+      setDisciplines(data);
+    };
+
+    fetchDisciplines();
+  }, []);
+
   return (
     <div className='place-content-center gap-4 p-6'>
       <div className="justify-between flex">
         <h1 className='text-2xl text-bold text-center mb-5'>Nos cours</h1>
         <a className="btn btn-outline" href="/planning.pdf" download="planning_MTB_BBoying_School.pdf">Planning complet (PDF)</a>
       </div>
+
       <div className="join join-vertical bg-neutral w-full">
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" defaultChecked />
-          <div className="collapse-title font-semibold">Breaking</div>
-          <div className="collapse-content text-sm">
-            <Breaking />
-          </div>
-        </div>
 
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">Soul Dance</div>
-          <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="Soul Dance" topBadge="Tous âges" horaires={["Mardi 20h-21h15"]} tarif="250€" img="souldance.jpg"/>
+        { disciplines.map((discipline) => (
+        <div key={discipline._id} className="collapse collapse-arrow join-item border-base-300 border">
+          { discipline.code == "breaking" ?
+          (<input type="radio" name="AccordionCours" defaultChecked />) : (<input type="radio" name="AccordionCours" />)
+          }
+          <div className="collapse-title font-semibold">{discipline.nom}</div>
+          <div className="collapse-content text-sm lg:flex gap-6">
+            { discipline.code == "breaking" ?
+            (<Breaking />)
+            :
+            (<AutresCours discipline={discipline.code} />)
+            }
           </div>
         </div>
-
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">Hip-Hop / Newstyle</div>
-          <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="Hip-Hop / Newstyle" topBadge="Adultes" horaires={["Jeudi 12h10-13h10"]} tarif="250€" img="logoMTBBS.jpg"/>
-          </div>
-        </div>
-
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">Tous styles</div>
-          <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="Loisir" topBadge="Ados/Adultes" horaires={["Mercredi 19h00-20h30"]} notes={["3 fois / mois"]}  tarif="240€" img="logoMTBBS.jpg" />
-          </div>
-        </div>
-
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">Graffiti</div>
-          <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="Graffiti" notes={["1 fois/mois"]} horaires={["Jeudi 18h-20h"]} tarif="180€" img="grafiti.jpg"/>
-          </div>
-        </div>
-
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">DJing</div>
-          <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="DJing" horaires={["Mercredi 19h-21h"]} notes={["1 fois/ mois"]} tarif="180€" img="djing.jpg"/>
-          </div>
-        </div>
-
-        <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="AccordionCours" />
-          <div className="collapse-title font-semibold">Pilates / Yoga</div>
-          <div className="collapse-content text-sm ml-9 lg:flex gap-6">
-            <CarteCours titre="Yoga**" topBadge="Adultes" horaires={["Mardi 12h10-13h10"]} tarif="450€" img="logoMTBBS.jpg"/>
-            <CarteCours titre="Pilates**" topBadge="Adultes" horaires={["Vendredi 12h10-13h10"]} tarif="450€" img="logoMTBBS.jpg"/>
-          </div>
-        </div>
+        ))}
       </div>
 
       <a target="_blank" rel="noopener noreferrer" className="my-10 w-full btn btn-xl btn-outline" href="https://www.helloasso.com/associations/kids-are-the-future#membership">INSCRIPTIONS</a>
@@ -85,5 +61,3 @@ const Cours = () => {
     </div>
   );
 };
-
-export default Cours;
