@@ -17,6 +17,14 @@ export default function SuppArticle (props) {
     if (response.ok) {
       const data = await response.json();
       alert(data.message);
+
+      // Appeler la fonction callback pour re-fetch les articles
+      if (props.onArticleDeleted) {
+        props.onArticleDeleted();
+      }
+
+      // Fermer la modal après suppression réussie
+      document.getElementById('SupprimerArticle').close();
     } else {
       alert('Failed to delete article');
     }

@@ -13,17 +13,17 @@ export async function GET() {
 
 // Ajoute un article dans la base de donnees
 export async function POST(req) {
-  const { titre, auteur, contenu } = await req.json();
-  const result = await clientPromise.db("kidsarethefuture").collection("articles").insertOne({ titre, auteur, createdAt: new Date(), contenu });
+  const { titre, auteur, contenu, lien, img } = await req.json();
+  const result = await clientPromise.db("kidsarethefuture").collection("articles").insertOne({ titre, auteur, createdAt: new Date(), contenu, lien, img });
   return Response.json({ message: "Article ajouté", id: result.insertedId });
 }
 
 // Met a jour un article dans la base de donnees
 export async function PUT(req) {
-  const { id, titre, auteur, contenu } = await req.json();
+  const { id, titre, auteur, contenu, lien, img } = await req.json();
   await clientPromise.db("kidsarethefuture").collection("articles").updateOne(
     { _id: new ObjectId(id) },
-    { $set: { titre, auteur, contenu } }
+    { $set: { titre, auteur, contenu, lien, img } }
   );
   return Response.json({ message: "Article mis à jour" });
 }
