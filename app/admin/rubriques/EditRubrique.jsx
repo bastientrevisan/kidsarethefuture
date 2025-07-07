@@ -1,21 +1,19 @@
 import { useState, useEffect } from "react";
 
-export default function EditArticle (props) {
+export default function EditRubrique (props) {
   const [titre, setTitre] = useState('');
-  const [auteur, setAuteur] = useState('');
-  const [contenu, setContenu] = useState('');
-  const [lien, setLien] = useState('');
+  const [ordre, setOrdre] = useState('');
   const [image, setImage] = useState('');
+  const [contenu, setContenu] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
 
   // Pour mettre a jour les states avec les nouvelles props lorsqu'on clique sur un bouton modifier
   useEffect(() => {
     setTitre(props.titre);
-    setAuteur(props.auteur);
-    setContenu(props.contenu);
-    setLien(props.lien);
+    setOrdre(props.ordre);
     setImage(props.img);
-  }, [props.titre,props.auteur,props.contenu,props.lien,props.img]);
+    setContenu(props.contenu);
+  }, [props.titre,props.ordre,props.img,props.contenu]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,18 +48,18 @@ export default function EditArticle (props) {
 
     if (!id)
     {
-      response = await fetch('/api/articles', {
+      response = await fetch('/api/rubriques', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titre, auteur, contenu, lien, img }),
+        body: JSON.stringify({ titre, ordre, img, contenu }),
       });
     }
     else
     {
-      response = await fetch('/api/articles', {
+      response = await fetch('/api/rubriques', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, titre, auteur, contenu, lien, img }),
+        body: JSON.stringify({ id, titre, ordre, img, contenu }),
       });
 
 
@@ -74,29 +72,30 @@ export default function EditArticle (props) {
       // Réinitialiser le fichier sélectionné
       setSelectedFile(null);
 
-      // Appeler la fonction callback pour re-fetch les articles
-      if (props.onArticleSaved) {
-        props.onArticleSaved();
+      // Appeler la fonction callback pour re-fetch les rubriques
+      if (props.onRubriqueSaved) {
+        props.onRubriqueSaved();
       }
 
       // Fermer la modal après enregistrement réussi
-      document.getElementById('EcrireArticle').close();
+      document.getElementById('EcrireRubrique').close();
 
     } else {
-      alert('Failed to add article');
+      alert('Failed to add rubrique');
     }
   };
 
   return (
     <div className="modal-box w-1/2 max-w-5xl">
       { titre ?
-        (<h3 className="font-bold text-lg">Éditer article</h3>) :
-        (<h3 className="font-bold text-lg">Nouvel article</h3>)
+        (<h3 className="font-bold text-lg">Éditer rubrique</h3>) :
+        (<h3 className="font-bold text-lg">Nouvelle rubrique</h3>)
       }
       <form method="dialog">
         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
       <form onSubmit={handleSubmit}>
+
         <legend className="fieldset-legend">Titre</legend>
         <input
           type="text"
@@ -106,14 +105,16 @@ export default function EditArticle (props) {
           placeholder="Titre"
           required
         />
-        <legend className="fieldset-legend">Auteur</legend>
+
+        <legend className="fieldset-legend">Ordre</legend>
         <input
           type="text"
           className="input w-3/4 m-2"
-          value={auteur}
-          onChange={e => setAuteur(e.target.value)}
-          placeholder="Auteur"
+          value={ordre}
+          onChange={e => setOrdre(e.target.value)}
+          placeholder="Ordre"
         />
+
         <legend className="fieldset-legend">Contenu</legend>
         <textarea
           className="textarea textarea-xl w-full h-100 m-2"
@@ -122,19 +123,12 @@ export default function EditArticle (props) {
           placeholder="Contenu"
           required
         />
-        <legend className="fieldset-legend">Lien</legend>
-        <input
-          type="text"
-          className="input w-3/4 m-2"
-          value={lien}
-          onChange={e => setLien(e.target.value)}
-          placeholder="Lien"
-        />
+
         <legend className="fieldset-legend">Image</legend>
         <div>
           {props.img ? (
             <figure className="max-w-1/2"> Aperçu :
-              <img src={`articles/${props.img}`} />
+              <img src={`rubriques/${props.img}`} />
             </figure>):null}
 
           {props.img ?

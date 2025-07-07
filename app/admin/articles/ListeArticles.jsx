@@ -5,7 +5,7 @@ import SuppArticle from "./SuppArticle";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
-export default function AdminArticles() {
+export default function ListeArticles() {
   const { data: session } = useSession();
   // State pour afficher tous les articles
   const [articles, setArticles] = useState([]);

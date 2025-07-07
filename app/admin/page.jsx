@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import ListeArticles from "./articles/ListeArticles";
 import ListeRubriques from "./rubriques/ListeRubriques";
+import ListeEvenements from "./evenements/ListeEvenements";
 
 export default function Admin() {
   const { data: session } = useSession();
@@ -31,17 +32,17 @@ export default function Admin() {
           </div>
     		</div>
 
-        <input type='radio' name='Panels' role='tab' className='tab' aria-label='Cours' />
+        {/* <input type='radio' name='Panels' role='tab' className='tab' aria-label='Cours' />
     		<div role='tabpanel' className='tab-content p-10'>
           <div className='lg:flex gap-6'>
             Cours
           </div>
-    		</div>
+    		</div> */}
 
         <input type='radio' name='Panels' role='tab' className='tab' aria-label='Événements' />
     		<div role='tabpanel' className='tab-content p-10'>
           <div className='lg:flex gap-6'>
-            Événements
+            <ListeEvenements />
           </div>
     		</div>
       </div>
