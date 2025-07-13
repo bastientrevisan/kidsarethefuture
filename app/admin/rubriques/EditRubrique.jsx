@@ -108,33 +108,33 @@ export default function EditRubrique (props) {
 
         <legend className="fieldset-legend">Ordre</legend>
         <input
-          type="text"
-          className="input w-3/4 m-2"
+          type="number"
+          className="input validator m-2"
           value={ordre}
           onChange={e => setOrdre(e.target.value)}
+          min="1"
+          max="20"
           placeholder="Ordre"
         />
 
         <legend className="fieldset-legend">Contenu</legend>
         <textarea
-          className="textarea textarea-xl w-full h-100 m-2"
+          className="textarea textarea-l w-full h-100 m-2"
           value={contenu}
           onChange={e => setContenu(e.target.value)}
           placeholder="Contenu"
           required
         />
 
-        <legend className="fieldset-legend">Image</legend>
+        <legend className="fieldset-legend">
+          {props.img ? "Modifier image" : "Ajouter image"}
+        </legend>
         <div>
           {props.img ? (
             <figure className="max-w-1/2"> Aperçu :
               <img src={`rubriques/${props.img}`} />
             </figure>):null}
 
-          {props.img ?
-            (<p> Modifier image :</p>) :
-            (<p> Ajouter image :</p>)
-          }
           <input
             type="file"
             className="ml-5 file-input"

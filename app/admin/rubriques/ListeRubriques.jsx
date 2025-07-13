@@ -76,7 +76,7 @@ export default function ListeRubriques() {
         <thead>
           <tr>
             <th>Titre</th>
-            <th>Position</th>
+            <th>Ordre</th>
             <th>{/* boutons modifier/supprimer */}</th>
           </tr>
         </thead>

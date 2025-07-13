@@ -89,10 +89,9 @@ export default function EditArticle (props) {
 
   return (
     <div className="modal-box w-1/2 max-w-5xl">
-      { titre ?
-        (<h3 className="font-bold text-lg">Éditer article</h3>) :
-        (<h3 className="font-bold text-lg">Nouvel article</h3>)
-      }
+      <h3 className="font-bold text-lg text-center">
+        {titre ? "Éditer article" : "Nouvel article"}
+      </h3>
       <form method="dialog">
         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
@@ -109,14 +108,14 @@ export default function EditArticle (props) {
         <legend className="fieldset-legend">Auteur</legend>
         <input
           type="text"
-          className="input w-3/4 m-2"
+          className="input w-1/4 m-2"
           value={auteur}
           onChange={e => setAuteur(e.target.value)}
           placeholder="Auteur"
         />
         <legend className="fieldset-legend">Contenu</legend>
         <textarea
-          className="textarea textarea-xl w-full h-100 m-2"
+          className="textarea textarea-l w-full h-100 m-2"
           value={contenu}
           onChange={e => setContenu(e.target.value)}
           placeholder="Contenu"
@@ -130,17 +129,16 @@ export default function EditArticle (props) {
           onChange={e => setLien(e.target.value)}
           placeholder="Lien"
         />
-        <legend className="fieldset-legend">Image</legend>
+
+        <legend className="fieldset-legend">
+          {props.img ? "Modifier image" : "Ajouter image"}
+        </legend>
         <div>
           {props.img ? (
             <figure className="max-w-1/2"> Aperçu :
               <img src={`articles/${props.img}`} />
             </figure>):null}
 
-          {props.img ?
-            (<p> Modifier image :</p>) :
-            (<p> Ajouter image :</p>)
-          }
           <input
             type="file"
             className="ml-5 file-input"

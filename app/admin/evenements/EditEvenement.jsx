@@ -108,16 +108,18 @@ export default function EditEvenement (props) {
 
         <legend className="fieldset-legend">Ordre</legend>
         <input
-          type="text"
-          className="input w-3/4 m-2"
+          type="number"
+          className="input validator m-2"
           value={ordre}
           onChange={e => setOrdre(e.target.value)}
+          min="1"
+          max="20"
           placeholder="Ordre"
         />
 
         <legend className="fieldset-legend">Description</legend>
         <textarea
-          className="textarea textarea-xl w-full h-100 m-2"
+          className="textarea textarea-l w-full h-100 m-2"
           value={description}
           onChange={e => setDescription(e.target.value)}
           placeholder="Description"
@@ -127,24 +129,22 @@ export default function EditEvenement (props) {
         <legend className="fieldset-legend">Date</legend>
         <input
           type="date"
-          className="input w-3/4 m-2"
+          className="input m-2"
           value={date}
           onChange={e => setDate(e.target.value)}
           placeholder="Date"
           required
         />
 
-        <legend className="fieldset-legend">Image</legend>
+        <legend className="fieldset-legend">
+          {props.img ? "Modifier image" : "Ajouter image"}
+        </legend>
         <div>
           {props.image ? (
             <figure className="max-w-1/2"> Aperçu :
               <img src={`evenements/${props.image}`} />
             </figure>):null}
 
-          {props.image ?
-            (<p> Modifier image :</p>) :
-            (<p> Ajouter image :</p>)
-          }
           <input
             type="file"
             className="ml-5 file-input"
