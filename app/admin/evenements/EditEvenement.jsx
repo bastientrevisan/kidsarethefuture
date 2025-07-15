@@ -67,12 +67,11 @@ export default function EditEvenement (props) {
 
     if (response.ok) {
       const data = await response.json();
-      alert(data.message);
 
       // Réinitialiser le fichier sélectionné
       setSelectedFile(null);
 
-      // Appeler la fonction callback pour re-fetch les rubriques
+      // Appeler la fonction callback pour re-fetch les events
       if (props.onEvenementSaved) {
         props.onEvenementSaved();
       }
@@ -104,17 +103,6 @@ export default function EditEvenement (props) {
           onChange={e => setTitre(e.target.value)}
           placeholder="Titre"
           required
-        />
-
-        <legend className="fieldset-legend">Ordre</legend>
-        <input
-          type="number"
-          className="input validator m-2"
-          value={ordre}
-          onChange={e => setOrdre(e.target.value)}
-          min="1"
-          max="20"
-          placeholder="Ordre"
         />
 
         <legend className="fieldset-legend">Description</legend>

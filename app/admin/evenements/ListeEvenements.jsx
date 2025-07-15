@@ -4,6 +4,7 @@ import EditEvenement from "./EditEvenement";
 import SuppEvenement from "./SuppEvenement";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { Reorder } from "motion/react";
 
 export default function ListeEvenements() {
   const { data: session } = useSession();
@@ -25,6 +26,23 @@ export default function ListeEvenements() {
     setEvenements(data);
   };
 
+  const reorderEvenements = async(newList) => {
+    var i = 1;
+
+    newList.map((event) => {
+      event.ordre = i;
+      i++;
+    });
+
+    await fetch('/api/evenements/update-order', {
+                method: 'POST',
+                body: JSON.stringify({ events: newList }),
+                headers: { 'Content-Type': 'application/json' },
+              });
+
+    setEvenements(newList);
+  };
+
   useEffect(() => {
     fetchEvenements();
   }, []);
@@ -42,7 +60,7 @@ export default function ListeEvenements() {
           setselectedEvenement({
             id: null,
             titre: '',
-            ordre: '',
+            ordre: evenements.length + 1,
             description: '',
             date: '',
             image: ''
@@ -62,7 +80,7 @@ export default function ListeEvenements() {
           description={selectedEvenement.description}
           date={selectedEvenement.date}
           image={selectedEvenement.image}
-          onRubriqueSaved={fetchEvenements}
+          onEvenementSaved={fetchEvenements}
         />
       </dialog>
 
@@ -70,64 +88,60 @@ export default function ListeEvenements() {
         <SuppEvenement
           id={selectedEvenement.id}
           titre={selectedEvenement.titre}
-          onRubriqueDeleted={fetchEvenements}
+          onEvenementDeleted={fetchEvenements}
         />
       </dialog>
 
-      <table className="table table-md bg-neutral mx-5 mb-5">
-        {/* head */}
-        <thead>
-          <tr>
-            <th>Titre</th>
-            <th>Ordre</th>
-            <th>{/* boutons modifier/supprimer */}</th>
-          </tr>
-        </thead>
+      <Reorder.Group
+        axis="y"
+        values={evenements}
+        onReorder={reorderEvenements}
+        className="list rounded-box"
+      >
+        {evenements.map((evenement) => (
+          <Reorder.Item
+            key={evenement._id}
+            value={evenement}
+            className="list-row"
+          >
+            <div className="text-4xl font-thin opacity-30 tabular-nums">{evenement.ordre}</div>
+            <div className="text-xl ml-10">{evenement.titre}</div>
 
-        <tbody>
-        { evenements.map((evenement) => (
-          <tr key={evenement._id}>
-            <td>{evenement.titre}</td>
-            <td>{evenement.ordre}</td>
-            <td className="flex">
-              <button
-                className="btn btn-ghost btn-xs"
-                onClick={() => {
-                  setselectedEvenement({
-                    id: evenement._id,
-                    titre: evenement.titre,
-                    ordre: evenement.ordre,
-                    description: evenement.description,
-                    date: evenement.date,
-                    image: evenement.image
-                  });
-                  document.getElementById('EcrireEvenement').showModal();
-                }}
-              >
-                Modifier
-              </button>
-              <button
-                className="btn btn-ghost btn-xs"
-                onClick={() => {
-                  setselectedEvenement({
-                    id: evenement._id,
-                    titre: evenement.titre,
-                    ordre: evenement.ordre,
-                    description: evenement.description,
-                    date: evenement.date,
-                    image: evenement.image
-                  });
-                  document.getElementById('SupprimerEvenement').showModal();
-                }}
-              >
-                Supprimer
-              </button>
-            </td>
-          </tr>
-          ))
-        }
-        </tbody>
-      </table>
+            <button
+              className="btn btn-ghost btn-xs"
+              onClick={() => {
+                setselectedEvenement({
+                  id: evenement._id,
+                  titre: evenement.titre,
+                  ordre: evenement.ordre,
+                  description: evenement.description,
+                  date: evenement.date,
+                  image: evenement.image
+                });
+                document.getElementById('EcrireEvenement').showModal();
+              }}
+            >
+              Modifier
+            </button>
+            <button
+              className="btn btn-ghost btn-xs"
+              onClick={() => {
+                setselectedEvenement({
+                  id: evenement._id,
+                  titre: evenement.titre,
+                  ordre: evenement.ordre,
+                  description: evenement.description,
+                  date: evenement.date,
+                  image: evenement.image
+                });
+                document.getElementById('SupprimerEvenement').showModal();
+              }}
+            >
+              Supprimer
+            </button>
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
     </div>
   );
 };

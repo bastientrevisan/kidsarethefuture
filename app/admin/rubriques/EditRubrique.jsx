@@ -106,17 +106,6 @@ export default function EditRubrique (props) {
           required
         />
 
-        <legend className="fieldset-legend">Ordre</legend>
-        <input
-          type="number"
-          className="input validator m-2"
-          value={ordre}
-          onChange={e => setOrdre(e.target.value)}
-          min="1"
-          max="20"
-          placeholder="Ordre"
-        />
-
         <legend className="fieldset-legend">Contenu</legend>
         <textarea
           className="textarea textarea-l w-full h-100 m-2"

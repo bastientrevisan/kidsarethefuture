@@ -16,7 +16,6 @@ export default function SuppEvenement (props) {
 
     if (response.ok) {
       const data = await response.json();
-      alert(data.message);
 
       // Appeler la fonction callback pour re-fetch les evenements
       if (props.onEvenementDeleted) {

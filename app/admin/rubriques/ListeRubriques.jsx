@@ -4,6 +4,7 @@ import EditRubrique from "./EditRubrique";
 import SuppRubrique from "./SuppRubrique";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { Reorder } from "motion/react";
 
 export default function ListeRubriques() {
   const { data: session } = useSession();
@@ -22,6 +23,23 @@ export default function ListeRubriques() {
     const response = await fetch("/api/rubriques");
     const data = await response.json();
     setRubriques(data);
+  };
+
+  const reorderRubriques = async(newList) => {
+    var i = 1;
+
+    newList.map((rubrique) => {
+      rubrique.ordre = i;
+      i++;
+    });
+
+    await fetch('/api/rubriques/update-order', {
+                method: 'POST',
+                body: JSON.stringify({ rubriques: newList }),
+                headers: { 'Content-Type': 'application/json' },
+              });
+
+    setRubriques(newList);
   };
 
   useEffect(() => {
@@ -71,58 +89,55 @@ export default function ListeRubriques() {
         />
       </dialog>
 
-      <table className="table table-md bg-neutral mx-5 mb-5">
-        {/* head */}
-        <thead>
-          <tr>
-            <th>Titre</th>
-            <th>Ordre</th>
-            <th>{/* boutons modifier/supprimer */}</th>
-          </tr>
-        </thead>
+      <Reorder.Group
+        axis="y"
+        values={rubriques}
+        onReorder={reorderRubriques}
+        className="list rounded-box"
+      >
+        {rubriques.map((rubrique) => (
+          <Reorder.Item
+            key={rubrique._id}
+            value={rubrique}
+            className="list-row"
+          >
+            <div className="text-4xl font-thin opacity-30 tabular-nums">{rubrique.ordre}</div>
+            <div className="text-xl ml-10">{rubrique.titre}</div>
 
-        <tbody>
-        { rubriques.map((rubrique) => (
-          <tr key={rubrique._id}>
-            <td>{rubrique.titre}</td>
-            <td>{rubrique.ordre}</td>
-            <td className="flex">
-              <button
-                className="btn btn-ghost btn-xs"
-                onClick={() => {
-                  setselectedRubrique({
-                    id: rubrique._id,
-                    titre: rubrique.titre,
-                    ordre: rubrique.ordre,
-                    img: rubrique.image,
-                    contenu: rubrique.contenu
-                  });
-                  document.getElementById('EcrireRubrique').showModal();
-                }}
-              >
-                Modifier
-              </button>
-              <button
-                className="btn btn-ghost btn-xs"
-                onClick={() => {
-                  setselectedRubrique({
-                    id: rubrique._id,
-                    titre: rubrique.titre,
-                    ordre: rubrique.ordre,
-                    img: rubrique.image,
-                    contenu: rubrique.contenu
-                  });
-                  document.getElementById('SupprimerRubrique').showModal();
-                }}
-              >
-                Supprimer
-              </button>
-            </td>
-          </tr>
+            <button
+              className="btn btn-ghost btn-xs"
+              onClick={() => {
+                setselectedRubrique({
+                  id: rubrique._id,
+                  titre: rubrique.titre,
+                  ordre: rubrique.ordre,
+                  img: rubrique.image,
+                  contenu: rubrique.contenu
+                });
+                document.getElementById('EcrireRubrique').showModal();
+              }}
+            >
+              Modifier
+            </button>
+            <button
+              className="btn btn-ghost btn-xs"
+              onClick={() => {
+                setselectedRubrique({
+                  id: rubrique._id,
+                  titre: rubrique.titre,
+                  ordre: rubrique.ordre,
+                  img: rubrique.image,
+                  contenu: rubrique.contenu
+                });
+                document.getElementById('SupprimerRubrique').showModal();
+              }}
+            >
+              Supprimer
+            </button>
+          </Reorder.Item>
           ))
         }
-        </tbody>
-      </table>
+      </Reorder.Group>
     </div>
   );
 };
