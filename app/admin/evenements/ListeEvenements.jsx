@@ -2,12 +2,9 @@
 import { useEffect, useState } from "react";
 import EditEvenement from "./EditEvenement";
 import SuppEvenement from "./SuppEvenement";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import { Reorder } from "motion/react";
 
 export default function ListeEvenements() {
-  const { data: session } = useSession();
   // State pour afficher tous les evenements
   const [evenements, setEvenements] = useState([]);
   // State pour éditer un evenement
@@ -46,11 +43,6 @@ export default function ListeEvenements() {
   useEffect(() => {
     fetchEvenements();
   }, []);
-
-  if (!session) {
-    // On est pas connectés
-    redirect('/auth/signin')
-  }
 
   return (
     <div className="w-full overflow-x-auto">

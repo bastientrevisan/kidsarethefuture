@@ -2,11 +2,8 @@
 import { useEffect, useState } from "react";
 import EditArticle from "./EditArticle";
 import SuppArticle from "./SuppArticle";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 export default function ListeArticles() {
-  const { data: session } = useSession();
   // State pour afficher tous les articles
   const [articles, setArticles] = useState([]);
   // State pour éditer un article
@@ -28,11 +25,6 @@ export default function ListeArticles() {
   useEffect(() => {
     fetchArticles();
   }, []);
-
-  if (!session) {
-    // On est pas connectés
-    redirect('/auth/signin')
-  }
 
   return (
     <div className="w-full overflow-x-auto">

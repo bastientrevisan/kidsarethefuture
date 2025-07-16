@@ -2,12 +2,9 @@
 import { useEffect, useState } from "react";
 import EditRubrique from "./EditRubrique";
 import SuppRubrique from "./SuppRubrique";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import { Reorder } from "motion/react";
 
 export default function ListeRubriques() {
-  const { data: session } = useSession();
   // State pour afficher toutes les rubriques
   const [rubriques, setRubriques] = useState([]);
   // State pour éditer une rubrique
@@ -45,11 +42,6 @@ export default function ListeRubriques() {
   useEffect(() => {
     fetchRubriques();
   }, []);
-
-  if (!session) {
-    // On est pas connectés
-    redirect('/auth/signin')
-  }
 
   return (
     <div className="w-full overflow-x-auto">

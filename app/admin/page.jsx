@@ -1,12 +1,11 @@
-"use client";
-import { useSession } from "next-auth/react";
+import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import ListeArticles from "./articles/ListeArticles";
 import ListeRubriques from "./rubriques/ListeRubriques";
 import ListeEvenements from "./evenements/ListeEvenements";
 
-export default function Admin() {
-  const { data: session } = useSession();
+export default async function Admin() {
+  const session = await auth();
 
   if (!session) {
     // On est pas connectés

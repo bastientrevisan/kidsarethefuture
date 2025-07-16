@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials"
 import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import client from "@/libs/mongodb"
 import clientPromise from "@/libs/mongodb"
-import { hashPassword, verifyPassword } from "@/lib/password"
+import { hashPassword, verifyPassword } from "@/libs/password"
 
 // Your own logic for dealing with plaintext password strings; be careful!
 // import { saltAndHashPassword } from "@/utils/password"
