@@ -1,4 +1,4 @@
-export default function SuppArticle (props) {
+export default function SuppRubrique (props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -7,7 +7,7 @@ export default function SuppArticle (props) {
 
     if (id)
     {
-      response = await fetch('/api/articles', {
+      response = await fetch('/api/rubriques', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
@@ -17,14 +17,22 @@ export default function SuppArticle (props) {
     if (response.ok) {
       const data = await response.json();
       alert(data.message);
+
+      // Appeler la fonction callback pour re-fetch les rubriques
+      if (props.onRubriqueDeleted) {
+        props.onRubriqueDeleted();
+      }
+
+      // Fermer la modal après suppression réussie
+      document.getElementById('SupprimerRubrique').close();
     } else {
-      alert('Failed to delete article');
+      alert('Failed to delete rubrique');
     }
   };
 
   return (
     <div className="modal-box">
-      <h3 className="font-bold text-lg">Supprimer article ? </h3>
+      <h3 className="font-bold text-lg">Supprimer rubrique ? </h3>
 
       <form method="dialog">
         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
