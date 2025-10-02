@@ -130,21 +130,27 @@ export default function EditArticle (props) {
           placeholder="Lien"
         />
 
-        <legend className="fieldset-legend">
-          {props.img ? "Modifier image" : "Ajouter image"}
-        </legend>
+        <legend className="fieldset-legend">Images</legend>
         <div>
-          {props.img ? (
-            <figure className="max-w-1/2"> Aperçu :
-              <img src={`articles/${props.img}`} />
-            </figure>):null}
-
           <input
             type="file"
             className="ml-5 file-input"
             accept="image/*"
             onChange={(e) => setSelectedFile(e.target.files[0])}
           />
+
+          { props.imgs ? (
+          <ul>
+          { props.imgs.map((img, index) => (
+            <li className="mt-2" key={index}>
+              <img src={`articles/${img}`} />
+              Supprimer
+            </li>
+          ))}
+          </ul> ) : null
+          }
+
+
         </div>
         <div className="flex justify-end m-2">
           <button className="btn btn-outline btn-secondary btn-lg m-2" type="submit">Enregistrer</button>

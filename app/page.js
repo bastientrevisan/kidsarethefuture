@@ -25,7 +25,7 @@ export default function Home() {
         <h1 className="text-xl font-bold mb-5">Derniers articles</h1>
         {article1 ? (
         <div className="mb-5">
-          <CarteArticle titre={article1.titre} contenu={article1.contenu} lien={article1.lien} img={article1.img}/>
+            <CarteArticle id={article1._id} titre={article1.titre} contenu={article1.contenu} lien={article1.lien} imgs={article1.imgs}/>
         </div>
         ) : (
           <p>Aucun article trouvé</p>
@@ -33,7 +33,7 @@ export default function Home() {
 
         {article2 ? (
         <div className="mb-5">
-          <CarteArticle titre={article2.titre} contenu={article2.contenu} lien={article2.lien} img={article2.img}/>
+          <CarteArticle id={article2._id} titre={article2.titre} contenu={article2.contenu} lien={article2.lien} imgs={article2.imgs}/>
         </div>
         ) : (
           <p>Aucun article trouvé</p>
@@ -42,7 +42,7 @@ export default function Home() {
 
       <div className="m-5">
         <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
-        <CarteEvent titre="MTB BATTLE" desc="Championnat amateur de danse Hip-hop." img="afficheBattle30x20.png" date="7 juin 2025"/>
+        <CarteEvent titre="BREAKING HISTORY" desc="Événement NATIONAL de BREAKING." img="BreakingHistory.jpg" date="2025-11-29"/>
       </div>
     </div>
   );

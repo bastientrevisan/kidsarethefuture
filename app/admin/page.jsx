@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import ListeArticles from "./articles/ListeArticles";
 import ListeRubriques from "./rubriques/ListeRubriques";
+import ListeCours from "./cours/ListeCours";
 import ListeEvenements from "./evenements/ListeEvenements";
 
 export default async function Admin() {
@@ -34,9 +35,9 @@ export default async function Admin() {
         {/* <input type='radio' name='Panels' role='tab' className='tab' aria-label='Cours' />
     		<div role='tabpanel' className='tab-content p-10'>
           <div className='lg:flex gap-6'>
-            Cours
+            <ListeCours />
           </div>
-    		</div> */}
+    		</div>*/}
 
         <input type='radio' name='Panels' role='tab' className='tab' aria-label='Événements' />
     		<div role='tabpanel' className='tab-content p-10'>

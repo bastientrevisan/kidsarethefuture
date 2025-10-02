@@ -9,6 +9,7 @@ export default function Actualites() {
     const fetchArticles = async () => {
       const response = await fetch("/api/articles");
       const data = await response.json();
+      console.log(data)
       setArticles(data);
     };
 
@@ -19,7 +20,7 @@ export default function Actualites() {
     <div className="p-6">
       { articles.map((article) => (
         <div key={article._id} className="mb-5">
-          <CarteArticle titre={article.titre} contenu={article.contenu} lien={article.lien} img={article.img}/>
+          <CarteArticle id={article._id} titre={article.titre} contenu={article.contenu} lien={article.lien} imgs={article.imgs}/>
         </div>
       ))}
     </div>
