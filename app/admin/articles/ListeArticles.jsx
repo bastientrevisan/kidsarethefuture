@@ -13,7 +13,7 @@ export default function ListeArticles() {
     auteur: '',
     contenu: '',
     lien: '',
-    img: ''
+    imgs: []
   });
 
   const fetchArticles = async () => {
@@ -37,7 +37,7 @@ export default function ListeArticles() {
             auteur: '',
             contenu: '',
             lien: '',
-            img: ''
+            imgs: []
           });
           document.getElementById('EcrireArticle').showModal();
         }}
@@ -53,7 +53,7 @@ export default function ListeArticles() {
           auteur={selectedArticle.auteur}
           contenu={selectedArticle.contenu}
           lien={selectedArticle.lien}
-          img={selectedArticle.img}
+          imgs={selectedArticle.imgs}
           onArticleSaved={fetchArticles}
         />
       </dialog>
@@ -93,7 +93,7 @@ export default function ListeArticles() {
                     auteur: article.auteur,
                     contenu: article.contenu,
                     lien: article.lien,
-                    img: article.img
+                    imgs: article.imgs
                   });
                   document.getElementById('EcrireArticle').showModal();
                 }}
@@ -109,7 +109,7 @@ export default function ListeArticles() {
                     auteur: article.auteur,
                     contenu: article.contenu,
                     lien: article.lien,
-                    img: article.img
+                    imgs: article.imgs
                   });
                   document.getElementById('SupprimerArticle').showModal();
                 }}

@@ -5,7 +5,7 @@ export default function EditArticle (props) {
   const [auteur, setAuteur] = useState('');
   const [contenu, setContenu] = useState('');
   const [lien, setLien] = useState('');
-  const [image, setImage] = useState('');
+  const [images, setImages] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
 
   // Pour mettre a jour les states avec les nouvelles props lorsqu'on clique sur un bouton modifier
@@ -14,46 +14,20 @@ export default function EditArticle (props) {
     setAuteur(props.auteur);
     setContenu(props.contenu);
     setLien(props.lien);
-    setImage(props.img);
-  }, [props.titre,props.auteur,props.contenu,props.lien,props.img]);
+    setImages(props.imgs);
+  }, [props.titre,props.auteur,props.contenu,props.lien,props.imgs]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = props.id;
     var response;
-    let img = image; // Par défaut, garder l'image existante
-
-    // Upload du fichier si un nouveau fichier est sélectionné
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-
-      try {
-        const uploadResponse = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (uploadResponse.ok) {
-          const uploadData = await uploadResponse.json();
-          img = uploadData.fileName; // Utiliser le nom du fichier uploadé
-        } else {
-          const errorData = await uploadResponse.json();
-          alert(`Erreur lors de l'upload: ${errorData.error}`);
-          return;
-        }
-      } catch (error) {
-        alert('Erreur lors de l\'upload du fichier');
-        return;
-      }
-    }
 
     if (!id)
     {
       response = await fetch('/api/articles', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titre, auteur, contenu, lien, img }),
+        body: JSON.stringify({ titre, auteur, contenu, lien, imgs }),
       });
     }
     else
@@ -61,7 +35,7 @@ export default function EditArticle (props) {
       response = await fetch('/api/articles', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, titre, auteur, contenu, lien, img }),
+        body: JSON.stringify({ id, titre, auteur, contenu, lien, imgs }),
       });
 
 
@@ -84,6 +58,31 @@ export default function EditArticle (props) {
 
     } else {
       alert('Failed to add article');
+    }
+  };
+
+  const uploadImg = async (e) => {
+    // Upload du fichier si un nouveau fichier est sélectionné
+    const formData = new FormData();
+    formData.append('file', e);
+
+    try {
+      const uploadResponse = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (uploadResponse.ok) {
+        const uploadData = await uploadResponse.json();
+        setImages(images.append(uploadData.fileName)); // Utiliser le nom du fichier uploadé
+      } else {
+        const errorData = await uploadResponse.json();
+        alert(`Erreur lors de l'upload: ${errorData.error}`);
+        return;
+      }
+    } catch (error) {
+      alert('Erreur lors de l\'upload du fichier');
+      return;
     }
   };
 
@@ -132,24 +131,35 @@ export default function EditArticle (props) {
 
         <legend className="fieldset-legend">Images</legend>
         <div>
+          Ajouter une image
           <input
             type="file"
             className="ml-5 file-input"
             accept="image/*"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
+            onChange={(e) => uploadImg(e.target.files[0])}
           />
 
-          { props.imgs ? (
-          <ul>
-          { props.imgs.map((img, index) => (
-            <li className="mt-2" key={index}>
-              <img src={`articles/${img}`} />
-              Supprimer
-            </li>
-          ))}
-          </ul> ) : null
+          { images ? (
+          <table className="table table-md mt-5 p-5">
+            <tbody>
+              { images.map((img, index) => (
+              <tr key={index}>
+                <td className="w-2/3"><img src={`articles/${img}`}/></td>
+                <td>
+                  <button
+                    className="btn btn-ghost align-middle"
+                    onClick={ () => {
+                      setImages(images.filter((_, i) => i !== index));
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                </td>
+              </tr>
+            ))}
+            </tbody>
+          </table> ) : null
           }
-
 
         </div>
         <div className="flex justify-end m-2">
