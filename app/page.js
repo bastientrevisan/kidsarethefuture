@@ -42,7 +42,7 @@ export default function Home() {
 
       <div className="m-5">
         <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
-        <CarteEvent titre="BREAKING HISTORY" desc="Événement NATIONAL de BREAKING." img="BreakingHistory.jpg" date="2025-11-29"/>
+        <CarteEvent titre="BREAKING HISTORY" desc="Événement NATIONAL de BREAKING." img="https://bopkh8bjquroeowh.public.blob.vercel-storage.com/BreakingHistory.jpg" date="2025-11-29"/>
       </div>
     </div>
   );

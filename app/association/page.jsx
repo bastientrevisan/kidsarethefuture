@@ -25,7 +25,7 @@ export default function Association() {
             { rubrique.ordre % 2 != 0 ? (
               <figure className="card-img lg:max-w-1/2">
                 <img
-                  src={`rubriques/${rubrique.image}`}
+                  src={rubrique.image}
                   alt={rubrique.titre} />
               </figure>
             ) : null}
@@ -39,7 +39,7 @@ export default function Association() {
             { rubrique.ordre % 2 == 0 ? (
               <figure className="card-img lg:max-w-1/2">
                 <img
-                  src={`rubriques/${rubrique.image}`}
+                  src={rubrique.image}
                   alt={rubrique.titre} />
               </figure>
             ) : null}

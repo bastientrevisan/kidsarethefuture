@@ -6,7 +6,7 @@ export default function EditEvenement (props) {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   // Pour mettre a jour les states avec les nouvelles props lorsqu'on clique sur un bouton modifier
   useEffect(() => {
@@ -21,32 +21,6 @@ export default function EditEvenement (props) {
     e.preventDefault();
     const id = props.id;
     var response;
-    let img = image; // Par défaut, garder l'image existante
-
-    // Upload du fichier si un nouveau fichier est sélectionné
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-
-      try {
-        const uploadResponse = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (uploadResponse.ok) {
-          const uploadData = await uploadResponse.json();
-          img = uploadData.fileName; // Utiliser le nom du fichier uploadé
-        } else {
-          const errorData = await uploadResponse.json();
-          alert(`Erreur lors de l'upload: ${errorData.error}`);
-          return;
-        }
-      } catch (error) {
-        alert('Erreur lors de l\'upload du fichier');
-        return;
-      }
-    }
 
     if (!id)
     {
@@ -67,9 +41,7 @@ export default function EditEvenement (props) {
 
     if (response.ok) {
       const data = await response.json();
-
-      // Réinitialiser le fichier sélectionné
-      setSelectedFile(null);
+      alert(data.message);
 
       // Appeler la fonction callback pour re-fetch les events
       if (props.onEvenementSaved) {
@@ -81,6 +53,33 @@ export default function EditEvenement (props) {
 
     } else {
       alert('Failed to add evenement');
+    }
+  };
+
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setImage(data.url);
+      } else {
+        alert('Failed to upload image');
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert('Failed to upload image');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -125,20 +124,27 @@ export default function EditEvenement (props) {
         />
 
         <legend className="fieldset-legend">
-          {props.img ? "Modifier image" : "Ajouter image"}
+          {image ? "Modifier image" : "Ajouter image"}
         </legend>
         <div>
-          {props.image ? (
+          {image ? (
             <figure className="max-w-1/2"> Aperçu :
-              <img src={`evenements/${props.image}`} />
+              <img src={image} />
             </figure>):null}
 
           <input
             type="file"
             className="ml-5 file-input"
             accept="image/*"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
+            disabled={uploading}
+            onChange={(e) => {
+              if (e.target.files[0]) {
+                handleImageUpload(e.target.files[0]);
+                e.target.value = ''; // Reset input pour permettre de réuploader le même fichier
+              }
+            }}
           />
+          {uploading && <span className="ml-2">Upload en cours...</span>}
         </div>
         <div className="flex justify-end m-2">
           <button className="btn btn-outline btn-secondary btn-lg m-2" type="submit">Enregistrer</button>
