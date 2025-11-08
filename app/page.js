@@ -5,6 +5,7 @@ import CarteArticle from "../components/CarteArticle";
 
 export default function Home() {
   const [latest, setLatest] = useState([]);
+  const [nextEvent, setNextEvent] = useState(null);
 
   useEffect(() => {
     const fetchlatestArticle = async () => {
@@ -13,7 +14,14 @@ export default function Home() {
       setLatest(data);
     };
 
+    const fetchNextEvent = async () => {
+      const response = await fetch("/api/evenements/next");
+      const data = await response.json();
+      setNextEvent(data);
+    };
+
     fetchlatestArticle();
+    fetchNextEvent();
   }, []);
 
   const article1 = latest[0] || null;
@@ -42,7 +50,11 @@ export default function Home() {
 
       <div className="m-5">
         <h1 className="text-xl font-bold mb-5">Prochain événement</h1>
-        <CarteEvent titre="BREAKING HISTORY" desc="Événement NATIONAL de BREAKING." img="https://bopkh8bjquroeowh.public.blob.vercel-storage.com/BreakingHistory.jpg" date="2025-11-29"/>
+        {nextEvent ? (
+          <CarteEvent titre={nextEvent.titre} desc={nextEvent.description} img={nextEvent.image} date={nextEvent.date}/>
+        ) : (
+          <p>Aucun événement à venir</p>
+        )}
       </div>
     </div>
   );

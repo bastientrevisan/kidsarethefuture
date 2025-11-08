@@ -18,7 +18,7 @@ export default function CarteEvent (props) {
           {dateFromString ? (
             <div className="badge badge-info">{dateFromString.toLocaleDateString("fr-FR", dateFmt)}</div>
           ) : null}
-          <div className="max-w-80">{props.desc}</div>
+          <div className="max-w-80 whitespace-pre-line text-justify">{props.desc}</div>
         </div>
       </div>
     </div>
