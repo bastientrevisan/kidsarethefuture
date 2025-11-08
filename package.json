@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/mongodb-adapter": "^3.9.0",
     "@types/bcryptjs": "^2.4.6",
+    "@vercel/blob": "^2.0.0",
     "autoprefixer": "^10.4.21",
     "bcryptjs": "^3.0.2",
     "mongodb": "^6.16.0",

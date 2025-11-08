@@ -6,7 +6,7 @@ export default function EditArticle (props) {
   const [contenu, setContenu] = useState('');
   const [lien, setLien] = useState('');
   const [images, setImages] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   // Pour mettre a jour les states avec les nouvelles props lorsqu'on clique sur un bouton modifier
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function EditArticle (props) {
       response = await fetch('/api/articles', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titre, auteur, contenu, lien, imgs }),
+        body: JSON.stringify({ titre, auteur, contenu, lien, imgs: images }),
       });
     }
     else
@@ -35,7 +35,7 @@ export default function EditArticle (props) {
       response = await fetch('/api/articles', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, titre, auteur, contenu, lien, imgs }),
+        body: JSON.stringify({ id, titre, auteur, contenu, lien, imgs: images }),
       });
 
 
@@ -44,9 +44,6 @@ export default function EditArticle (props) {
     if (response.ok) {
       const data = await response.json();
       alert(data.message);
-
-      // Réinitialiser le fichier sélectionné
-      setSelectedFile(null);
 
       // Appeler la fonction callback pour re-fetch les articles
       if (props.onArticleSaved) {
@@ -61,28 +58,30 @@ export default function EditArticle (props) {
     }
   };
 
-  const uploadImg = async (e) => {
-    // Upload du fichier si un nouveau fichier est sélectionné
-    const formData = new FormData();
-    formData.append('file', e);
+  const handleImageUpload = async (file) => {
+    if (!file) return;
 
+    setUploading(true);
     try {
-      const uploadResponse = await fetch('/api/upload', {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
 
-      if (uploadResponse.ok) {
-        const uploadData = await uploadResponse.json();
-        setImages(images.append(uploadData.fileName)); // Utiliser le nom du fichier uploadé
+      if (response.ok) {
+        const data = await response.json();
+        setImages([...images, data.url]);
       } else {
-        const errorData = await uploadResponse.json();
-        alert(`Erreur lors de l'upload: ${errorData.error}`);
-        return;
+        alert('Failed to upload image');
       }
     } catch (error) {
-      alert('Erreur lors de l\'upload du fichier');
-      return;
+      console.error('Upload error:', error);
+      alert('Failed to upload image');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -136,17 +135,25 @@ export default function EditArticle (props) {
             type="file"
             className="ml-5 file-input"
             accept="image/*"
-            onChange={(e) => uploadImg(e.target.files[0])}
+            disabled={uploading}
+            onChange={(e) => {
+              if (e.target.files[0]) {
+                handleImageUpload(e.target.files[0]);
+                e.target.value = ''; // Reset input pour permettre de réuploader le même fichier
+              }
+            }}
           />
+          {uploading && <span className="ml-2">Upload en cours...</span>}
 
-          { images ? (
+          { images && images.length > 0 ? (
           <table className="table table-md mt-5 p-5">
             <tbody>
               { images.map((img, index) => (
               <tr key={index}>
-                <td className="w-2/3"><img src={`articles/${img}`}/></td>
+                <td className="w-2/3"><img src={img} alt={`Image ${index + 1}`} className="max-w-full h-auto"/></td>
                 <td>
                   <button
+                    type="button"
                     className="btn btn-ghost align-middle"
                     onClick={ () => {
                       setImages(images.filter((_, i) => i !== index));
