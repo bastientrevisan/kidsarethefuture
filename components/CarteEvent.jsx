@@ -1,3 +1,4 @@
+import { renderContentWithLinks } from "@/libs/utils";
 
 export default function CarteEvent (props) {
   const dateFmt = { day: '2-digit', month: 'short', year: 'numeric' };
@@ -18,7 +19,7 @@ export default function CarteEvent (props) {
           {dateFromString ? (
             <div className="badge badge-info">{dateFromString.toLocaleDateString("fr-FR", dateFmt)}</div>
           ) : null}
-          <div className="max-w-80 whitespace-pre-line text-justify">{props.desc}</div>
+          <div className="max-w-80 whitespace-pre-line text-justify">{renderContentWithLinks(props.desc)}</div>
         </div>
       </div>
     </div>

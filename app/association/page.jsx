@@ -1,4 +1,5 @@
 "use client";
+import { renderContentWithLinks } from "@/libs/utils";
 import { useEffect, useState } from "react";
 
 export default function Association() {
@@ -32,7 +33,7 @@ export default function Association() {
 
             <div className="card-body lg:max-w-1/2">
               <h2 className="card-title">{rubrique.titre}</h2>
-              <div className="whitespace-pre-line text-justify">{rubrique.contenu}</div>
+              <div className="whitespace-pre-line text-justify">{renderContentWithLinks(rubrique.contenu)}</div>
             </div>
 
             {/* Ordre pair: image a droite */}

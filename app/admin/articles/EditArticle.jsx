@@ -4,7 +4,6 @@ export default function EditArticle (props) {
   const [titre, setTitre] = useState('');
   const [auteur, setAuteur] = useState('');
   const [contenu, setContenu] = useState('');
-  const [lien, setLien] = useState('');
   const [images, setImages] = useState([]);
   const [uploading, setUploading] = useState(false);
 
@@ -13,9 +12,8 @@ export default function EditArticle (props) {
     setTitre(props.titre);
     setAuteur(props.auteur);
     setContenu(props.contenu);
-    setLien(props.lien);
     setImages(props.imgs);
-  }, [props.titre,props.auteur,props.contenu,props.lien,props.imgs]);
+  }, [props.titre,props.auteur,props.contenu,props.imgs]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +25,7 @@ export default function EditArticle (props) {
       response = await fetch('/api/articles', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titre, auteur, contenu, lien, imgs: images }),
+        body: JSON.stringify({ titre, auteur, contenu, imgs: images }),
       });
     }
     else
@@ -35,7 +33,7 @@ export default function EditArticle (props) {
       response = await fetch('/api/articles', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, titre, auteur, contenu, lien, imgs: images }),
+        body: JSON.stringify({ id, titre, auteur, contenu, imgs: images }),
       });
 
 
@@ -116,16 +114,8 @@ export default function EditArticle (props) {
           className="textarea textarea-l w-full h-100 m-2"
           value={contenu}
           onChange={e => setContenu(e.target.value)}
-          placeholder="Contenu"
+          placeholder="Contenu (les liens seront automatiquement détectés)"
           required
-        />
-        <legend className="fieldset-legend">Lien</legend>
-        <input
-          type="text"
-          className="input w-3/4 m-2"
-          value={lien}
-          onChange={e => setLien(e.target.value)}
-          placeholder="Lien"
         />
 
         <legend className="fieldset-legend">Images</legend>
