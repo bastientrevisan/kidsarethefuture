@@ -24,6 +24,10 @@ export default function Cours() {
         <a className="btn btn-outline" href="/planning.pdf" download="planning_MTB_BBoying_School.pdf">Planning complet (PDF)</a>
       </div>
 
+      <a target="_blank" rel="noopener noreferrer" className="my-10 w-full btn btn-xl btn-outline" href="https://www.helloasso.com/associations/kids-are-the-future/adhesions/inscriptions-cours-d-essais-septembre-2026">
+        COURS D'ESSAI - SEPTEMBRE 2026
+      </a>
+
       <div className="join join-vertical bg-neutral w-full">
 
         { disciplines.map((discipline) => (
@@ -53,10 +57,6 @@ export default function Cours() {
           <li>Tarif préférentiel pour les personnes habitant dans les quartiers prioritaires de la ville (Chambord-Chaumes-Monplaisir-Coeur de ville)
               Contactez-nous pour plus d'informations</li>
         </ul>
-        <p className="mt-2">
-        ** Possibilité 2 cours par semaine yoga/pilates,
-        Contactez-nous
-        </p>
       </div>
     </div>
   );

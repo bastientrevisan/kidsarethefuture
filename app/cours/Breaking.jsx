@@ -58,7 +58,15 @@ export default function Breaking() {
       <div className='lg:flex gap-6'>
         {afficherCours("Tous niveaux")}
       </div>
-		</div>
+    </div>
+
+    <input type='radio' name='Cours' role='tab' className='tab' aria-label='Tous niveaux - INSTITUT FAMILIAL' />
+		<div role='tabpanel' className='tab-content p-10'>
+      <div className='lg:flex gap-6'>
+        {afficherCours("Tous niveaux - INSTITUT FAMILIAL")}
+      </div>
+    </div>
+
  	</div>
 	)
 }
