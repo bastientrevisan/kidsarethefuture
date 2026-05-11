@@ -26,7 +26,7 @@ export default function Breaking() {
 	<div role='tablist' className='tabs tabs-border tabs-xl bg-neutral'>
 	  <input type='radio' name='Cours' role='tab' className='tab' aria-label='Débutant' defaultChecked />
 		<div role='tabpanel' className='tab-content p-10'>
-      <div className='lg:flex gap-4'>
+      <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6'>
         {afficherCours("Débutant")}
       </div>
 		</div>
@@ -34,35 +34,35 @@ export default function Breaking() {
 		<input type='radio' name='Cours' role='tab' className='tab' aria-label='Intermédiaire' />
 		<div role='tabpanel' className='tab-content p-10'>
       <h1 className="text-l font-bold mb-5"> 1 an de pratique minimum </h1>
-      <div className='lg:flex gap-6'>
+      <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6'>
         {afficherCours("Intermédiaire")}
       </div>
 		</div>
 
 		<input type='radio' name='Cours' role='tab' className='tab' aria-label='Avancé' />
 		<div role='tabpanel' className='tab-content p-10'>
-      <div className='lg:flex gap-6'>
+		  <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6'>
         {afficherCours("Avancé")}
       </div>
 		</div>
 
 		<input type='radio' name='Cours' role='tab' className='tab' aria-label='Confirmé' />
 		<div role='tabpanel' className='tab-content p-10'>
-      <div className='lg:flex gap-6'>
+		  <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6'>
         {afficherCours("Confirmé")}
       </div>
 		</div>
 
     <input type='radio' name='Cours' role='tab' className='tab' aria-label='Tous niveaux' />
 		<div role='tabpanel' className='tab-content p-10'>
-      <div className='lg:flex gap-6'>
+		  <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6'>
         {afficherCours("Tous niveaux")}
       </div>
     </div>
 
     <input type='radio' name='Cours' role='tab' className='tab' aria-label='Tous niveaux - INSTITUT FAMILIAL' />
 		<div role='tabpanel' className='tab-content p-10'>
-      <div className='lg:flex gap-6'>
+		  <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6'>
         {afficherCours("Tous niveaux - INSTITUT FAMILIAL")}
       </div>
     </div>
