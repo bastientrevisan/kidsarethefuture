@@ -54,6 +54,7 @@ export default function Cours() {
           * ATTENTION:
           <li>+ 20€ d'adhésion obligatoire sur tous les tarifs</li>
           <li>- 10% famille sur la cotisation.</li>
+          <li>2ème cours = 150€.</li>
           <li>Tarif préférentiel pour les personnes habitant dans les quartiers prioritaires de la ville (Chambord-Chaumes-Monplaisir-Coeur de ville)
               Contactez-nous pour plus d'informations</li>
         </ul>

@@ -33,9 +33,12 @@ export default function CarteCours (props) {
           <div>{ props.lieu }</div>
           ) : null
           }
+          {props.tarif ? (
           <div className="card-actions justify-end">
             <div className="badge badge-info">{ props.tarif }€*</div>
-          </div>
+            </div>
+          ) : null
+          }
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Breaking() {
 	<div role='tablist' className='tabs tabs-border tabs-xl bg-neutral'>
 	  <input type='radio' name='Cours' role='tab' className='tab' aria-label='Débutant' defaultChecked />
 		<div role='tabpanel' className='tab-content p-10'>
-      <div className='lg:flex gap-6'>
+      <div className='lg:flex gap-4'>
         {afficherCours("Débutant")}
       </div>
 		</div>
